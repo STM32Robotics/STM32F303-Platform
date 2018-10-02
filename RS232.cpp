@@ -5,34 +5,38 @@ volatile void (*RS232Invoker)(char*, int) = 0;
 void RS232Init()
 {
 	//Literally change the pins/uart number and it'll work
-	//USART1 PA2 and PA3 do not work, they are not physically connected
+	//USART1 PA2 and PA3 do not work, they are not physically connected on the Nucleo
 
 	USART_InitTypeDef usartStruct;
 	
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 	
 	GPIO_InitTypeDef gpioStruct;
-	gpioStruct.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5;
+	gpioStruct.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5; //PA4/PA5
 	gpioStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	gpioStruct.GPIO_Mode = GPIO_Mode_AF;
 	gpioStruct.GPIO_OType = GPIO_OType_PP;
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(GPIOC, &gpioStruct);
 
+	//Important to define the alternate function
+	//Must use pin source not actual pin value
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource4, GPIO_AF_7);
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource5, GPIO_AF_7);
 	
+	//Enable UART clock attached to pins
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-	usartStruct.USART_BaudRate = 115200;   
+	usartStruct.USART_BaudRate = 115200;
 	usartStruct.USART_WordLength = USART_WordLength_8b;  
 	usartStruct.USART_StopBits = USART_StopBits_1;   
 	usartStruct.USART_Parity = USART_Parity_No ;
 	usartStruct.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 	usartStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_Init(USART1, &usartStruct);
-	USART_Cmd(USART1, ENABLE);
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	USART_Init(USART1, &usartStruct); //Initialize it
+	USART_Cmd(USART1, ENABLE); //Enable the UART
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); //Enable receieve interrupting
 	
+	//Enable the actual interrupt
 	NVIC_InitTypeDef NVIC_InitStruct;
 	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
@@ -86,7 +90,7 @@ extern "C"
 		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 		{
 			char data = (char)USART_ReceiveData(USART1);
-			if(data == '\r')
+			if(data == '\r') //End of string
 			{
 				AddCommandToQueue(DataBuffer);
 				DataBuffer.Clear();

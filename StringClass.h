@@ -2,15 +2,16 @@
 #define STRINGCLASS_H_
 
 #include "ctype.h"
-#include "string.h"
+#include <string.h>
 
 #define BufferSize 128
+
 class TString
 {
 private:
 	unsigned int StrSize = 0;
 	char Buffer[BufferSize];
-	char ErrorBuffer[1];
+	char ErrorBuffer[1]; //Trick to bypass pointer return
 	void ResetBuffer();
 public:
 	TString(const char* str);
@@ -18,10 +19,12 @@ public:
 	TString();
 	void ToLower();
 	void ToUpper();
-	bool DoesWordEqualTo(unsigned int wordN, const char* word);
+	bool DoesWordEqualTo(unsigned int wordN, const char* word); //"String 1" -> DoesWordEqualTo(2, "1") -> true
 	bool DoesWordEqualTo(unsigned int wordN, TString word);
 	void Clear();
 	int GetLength();
+
+	//Operators overloading
 	const char operator[](const unsigned int i) const;
 	char& operator[](const unsigned int i) ;
 	TString &operator=(const TString &lr);

@@ -177,6 +177,8 @@ TString &TString::operator+=(const char &str)
 {
 	Buffer[StrSize] = str;
 	StrSize++;
+	if(StrSize >= BufferSize)
+		StrSize = 0;
 	return *this;
 }
 
