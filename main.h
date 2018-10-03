@@ -11,5 +11,15 @@
 #include "Utilities.h"
 
 extern volatile void (*LoopFunc)();
+extern "C" 
+{ 
+	void HardFault_Handler();
+	void MemManage_Handler();
+	void BusFault_Handler();
+	void UsageFault_Handler();
+	void SVC_Handler();
+	void DebugMon_Handler();
+	void PendSV_Handler();
+}
 
 #endif

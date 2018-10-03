@@ -2,48 +2,92 @@
 
 //https://www.keil.com/update/sw/mdk/5.26
 
+void SetLEDColorEx(TString arg)
+{
+	if(arg == "green")
+	{
+		SetLEDColor(LED_Green);
+		RS232SendString("Command:Successful (led green)");
+	}
+	else if(arg == "red")
+	{
+		SetLEDColor(LED_Red);
+		RS232SendString("Command:Successful (led red)");
+	}
+	else if(arg == "blue")
+	{
+		SetLEDColor(LED_Blue);
+		RS232SendString("Command:Successful (led blue)");
+	}
+	else if(arg == "yellow")
+	{
+		SetLEDColor(LED_Yellow);
+		RS232SendString("Command:Successful (led yellow)");
+	}
+	else if(arg == "white")
+	{
+		SetLEDColor(LED_White);
+		RS232SendString("Command:Successful (led white)");
+	}
+	else if(arg == "magenta")
+	{
+		SetLEDColor(LED_Magenta);
+		RS232SendString("Command:Successful (led magenta)");
+	}
+	else if(arg == "cyan")
+	{
+		SetLEDColor(LED_Cyan);
+		RS232SendString("Command:Successful (led cyan)");
+	}
+	else if(arg == "off")
+	{
+		SetLEDColor(LED_Off);
+		RS232SendString("Command:Successful (led off)");
+	}
+}
+
 void LEDCallback(TString msg)
 {
 	bool FoundCommand = false;
 	if(msg.DoesWordEqualTo(2, "green"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Green);
+		SetLEDColorEx("green");
 	}
 	else if(msg.DoesWordEqualTo(2, "blue"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Blue);
+		SetLEDColorEx("blue");
 	}
 	else if(msg.DoesWordEqualTo(2, "red"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Red);
+		SetLEDColorEx("red");
 	}
 	else if(msg.DoesWordEqualTo(2, "off"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Off);
+		SetLEDColorEx("off");
 	}
 	else if(msg.DoesWordEqualTo(2, "yellow"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Yellow);
+		SetLEDColorEx("yellow");
 	}
 	else if(msg.DoesWordEqualTo(2, "white"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_White);
+		SetLEDColorEx("white");
 	}
 	else if(msg.DoesWordEqualTo(2, "magenta"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Magenta);
+		SetLEDColorEx("magenta");
 	}
 	else if(msg.DoesWordEqualTo(2, "cyan"))
 	{
 		FoundCommand = true;
-		SetLEDColor(LED_Cyan);
+		SetLEDColorEx("cyan");
 	}
 	else
 	{
@@ -53,11 +97,6 @@ void LEDCallback(TString msg)
 		RS232SendString(str);
 		return;
 	}
-	
-	TString str = "Command:Successful (";
-	str += msg;
-	str += ")";
-	RS232SendString(str);
 }
 
 volatile bool DoTask = false;
@@ -71,8 +110,8 @@ void Timer2CH1Callback()
 
 void ResetCommand(TString args)
 {
+	//SetLEDColorEx("red");
 	RS232SendString("Resetting...");
-	SetLEDColor(LED_Red);
 	//Clean up
 	Delay(2500);
 	NVIC_SystemReset();
@@ -81,6 +120,49 @@ void ResetCommand(TString args)
 void PingPongCommand(TString args)
 {
 	RS232SendString("Pong");
+}
+
+void ReportOnline(TString args)
+{
+	RS232SendString("Is Online");
+}
+
+extern "C"
+{
+	void HardFault_Handler()
+	{
+		RS232SendString("HardFault:Handler");
+	}
+	
+	void MemManage_Handler()
+	{
+		RS232SendString("MemManage:Handler");
+	}
+	
+	void BusFault_Handler()
+	{
+		RS232SendString("BusFault:Handler");
+	}
+	
+	void UsageFault_Handler()
+	{
+		RS232SendString("UsageFault:Handler");
+	}
+	
+	void SVC_Handler()
+	{
+		RS232SendString("SVC:Handler");
+	}
+	
+	void DebugMon_Handler()
+	{
+		RS232SendString("DebugMon:Handler");
+	}
+	
+	void PendSV_Handler()
+	{
+		RS232SendString("PendSV:Handler");
+	}
 }
 
 int main()
@@ -100,14 +182,14 @@ int main()
 	SetLEDColor(LED_Magenta);
 	Delay(100);
 	RS232SendString("Boot:Successful");
-	SetLEDColor(LED_Off);
+	SetLEDColorEx("off");
 	LEDToggle();
 	unsigned int i = 0;
 	
-	                                                                              
+	AddCommandHandler(&LEDCallback, "led");                                                
 	AddCommandHandler(&ResetCommand, "reset");
 	AddCommandHandler(&PingPongCommand, "ping");
-	
+	AddCommandHandler(&ReportOnline, "online");
 	
 	AddTimerCallback("TIM8CH1", &Timer2CH1Callback);
 	

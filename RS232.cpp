@@ -47,36 +47,40 @@ void RS232Init()
 
 void RS232Send(char ch)
 {
-	while(!USART_GetFlagStatus(USART2, USART_FLAG_TXE));
+	while(!USART_GetFlagStatus(USART1, USART_FLAG_TXE)); //Check to see if we can send
 	USART_SendData(USART1, ch);
 }
 
+unsigned int RSDelayTimer = 1;
 void RS232SendString(const char* str)
 {
+	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped
 	for(int i = 0; i < strlen(str); i++)
 	{
 		RS232Send(str[i]);
-		Delay(1);
+		Delay(RSDelayTimer);
 	}
 	RS232Send('\r');
 }
 
 void RS232SendString(TString str)
 {
+	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped
 	for(int i = 0; i < str.GetLength(); i++)
 	{
 		RS232Send(str[i]);
-		Delay(1);
+		Delay(RSDelayTimer);
 	}
 	RS232Send('\r');
 }
 
 void RS232SendString(char* str)
 {
+	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped
 	for(int i = 0; i < strlen(str); i++)
 	{
 		RS232Send(str[i]);
-		Delay(1);
+		Delay(RSDelayTimer);
 	}
 	RS232Send('\r');
 }
@@ -87,11 +91,16 @@ extern "C"
 {
 	void USART1_IRQHandler()
 	{
-		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) //Check if we can read
 		{
 			char data = (char)USART_ReceiveData(USART1);
 			if(data == '\r') //End of string
 			{
+				if(DataBuffer.GetLength() == 0) //Scrap empty buffer and don't bother
+				{
+					DataBuffer.Clear();
+					return;
+				}
 				AddCommandToQueue(DataBuffer);
 				DataBuffer.Clear();
 			}
