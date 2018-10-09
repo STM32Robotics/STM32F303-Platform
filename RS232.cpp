@@ -51,7 +51,7 @@ void RS232Send(char ch)
 	USART_SendData(USART1, ch);
 }
 
-unsigned int RSDelayTimer = 1;
+unsigned int RSDelayTimer = 5;
 void RS232SendString(const char* str)
 {
 	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped

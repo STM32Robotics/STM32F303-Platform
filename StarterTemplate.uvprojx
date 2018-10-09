@@ -768,6 +768,26 @@
               <FileType>5</FileType>
               <FilePath>.\TimerCallback.h</FilePath>
             </File>
+            <File>
+              <FileName>LCDSystem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\LCDSystem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LCDSystem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCDSystem.h</FilePath>
+            </File>
+            <File>
+              <FileName>ServoSystem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ServoSystem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ServoSystem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ServoSystem.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

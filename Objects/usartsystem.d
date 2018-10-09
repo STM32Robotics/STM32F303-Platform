@@ -21,5 +21,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

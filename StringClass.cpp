@@ -84,6 +84,41 @@ bool TString::DoesWordEqualTo(unsigned int wordN, const char* word)
 	return true;
 }
 
+void TString::RemoveFirstWords(unsigned int wordCount)
+{
+	unsigned int cnt = 0;
+	unsigned int i = 0;
+	for(i = 0; i < StrSize; i++)
+	{
+		if(Buffer[i] == ' ')
+		{
+			cnt++;
+			if(cnt >= wordCount)
+			{
+				i++;
+				break;
+			}
+		}
+	}
+	
+	for(unsigned int j = 0; j < StrSize - i; j++)
+	{
+		Buffer[j] = Buffer[j + i];
+	}
+	for(unsigned int j = 0; j < i; j++)
+	{
+		Buffer[StrSize - j - 1] = 0;
+	}
+	for(unsigned int j = 0;; j++)
+	{
+		if(Buffer[j] == 0)
+		{
+			StrSize = j;
+			return;
+		}
+	}
+}
+
 bool TString::DoesWordEqualTo(unsigned int wordN, TString word)
 {
 	if (wordN == 0)
@@ -178,7 +213,21 @@ TString &TString::operator+=(const char &str)
 	Buffer[StrSize] = str;
 	StrSize++;
 	if(StrSize >= BufferSize)
-		StrSize = 0;
+	{
+		StrSize = StrSize - 1;
+		return *this;
+	}
+	return *this;
+}
+
+TString &TString::operator+=(const unsigned int &num)
+{
+	char str[128];
+	snprintf(str, 128, "%d", num);
+	for(unsigned int i = 0; i < strlen(str); i++)
+	{
+		*this += str[i];
+	}
 	return *this;
 }
 

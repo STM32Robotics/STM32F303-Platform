@@ -2,8 +2,10 @@
 #define ENCODER_H_
 
 #include "stm32f30x.h"
-#include "stm32f30x_misc.h"
 
 void EncoderInit();
+uint32_t GetWaveSpeed();
+uint32_t GetSpeed();
+void Timer3Handler();
 
 #endif

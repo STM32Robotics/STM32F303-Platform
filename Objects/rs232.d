@@ -19,4 +19,6 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h CommandSystem.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h CommandSystem.h

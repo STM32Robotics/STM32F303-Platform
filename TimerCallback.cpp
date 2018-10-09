@@ -56,6 +56,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM1, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM1CH4");
 		}
+		ExecuteTimerCallback("TIM1");
 	}
 	
 	void TIM2_IRQHandler()
@@ -80,6 +81,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM2, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM2CH4");
 		}
+		ExecuteTimerCallback("TIM2");
 	}
 
 	void TIM3_IRQHandler()
@@ -104,6 +106,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM3, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM3CH4");
 		}
+		ExecuteTimerCallback("TIM3");
 	}
 
 	void TIM4_IRQHandler()
@@ -128,6 +131,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM4, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM4CH4");
 		}
+		ExecuteTimerCallback("TIM4");
 	}
 
 	void TIM7_IRQHandler()
@@ -152,6 +156,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM7, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM7CH4");
 		}
+		ExecuteTimerCallback("TIM7");
 	}
 	
 	void TIM8_CC_IRQHandler()
@@ -176,6 +181,7 @@ extern "C"
 			TIM_ClearITPendingBit(TIM8, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM8CH4");
 		}
+		ExecuteTimerCallback("TIM8");
 	}
 	
 	void TIM20_CC_IRQHandler()
@@ -200,5 +206,6 @@ extern "C"
 			TIM_ClearITPendingBit(TIM20, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM20CH4");
 		}
+		ExecuteTimerCallback("TIM20");
 	}
 };

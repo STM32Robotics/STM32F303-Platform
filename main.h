@@ -9,6 +9,7 @@
 #include "CommandSystem.h"
 #include "TimerCallback.h"
 #include "Utilities.h"
+#include "LCDSystem.h"
 
 extern volatile void (*LoopFunc)();
 extern "C" 

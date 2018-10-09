@@ -110,7 +110,7 @@ void Timer2CH1Callback()
 
 void ResetCommand(TString args)
 {
-	//SetLEDColorEx("red");
+	SetLEDColorEx("red");
 	RS232SendString("Resetting...");
 	//Clean up
 	Delay(2500);
@@ -125,6 +125,20 @@ void PingPongCommand(TString args)
 void ReportOnline(TString args)
 {
 	RS232SendString("Is Online");
+}
+
+void LCDCommand(TString args)
+{
+	if(args.DoesWordEqualTo(2, "clear"))
+	{
+		LCDClearLine(First);
+	}
+	else
+	{
+		LCDClearLine(First);
+		args.RemoveFirstWords(1);
+		LCDSendString(args);
+	}
 }
 
 extern "C"
@@ -165,6 +179,14 @@ extern "C"
 	}
 }
 
+//96 bits
+//Unique ID found at 0x1FFFF7AC
+//Address offset 0x00 32 bits -> BCD format
+//Address offset 0x04 32 bits -> 32-39 -> Wafer Number -> 40-63 -> Lot number
+//Address offset 0x08 32 bits -> 64-95 -> Lot number
+
+#define STM32_UUID ((uint32_t*)0x1FFFF7AC)
+
 int main()
 {
 	SystemInit();
@@ -181,20 +203,38 @@ int main()
 	RS232Init();
 	SetLEDColor(LED_Magenta);
 	Delay(100);
+	LCDInit();
+	Delay(100);
+	SetLEDColor(LED_Yellow);
+	Delay(100);
 	RS232SendString("Boot:Successful");
 	SetLEDColorEx("off");
 	LEDToggle();
 	unsigned int i = 0;
 	
+	TString arg = "UID: ";
+	uint32_t idPart1 = STM32_UUID[0];
+	uint32_t idPart2 = STM32_UUID[1];
+	uint32_t idPart3 = STM32_UUID[2];
+	arg += idPart1;
+	arg += idPart2;
+	arg += idPart3;
+	RS232SendString(arg);
+	//Delay(5000);
+	
 	AddCommandHandler(&LEDCallback, "led");                                                
 	AddCommandHandler(&ResetCommand, "reset");
 	AddCommandHandler(&PingPongCommand, "ping");
 	AddCommandHandler(&ReportOnline, "online");
+	AddCommandHandler(&LCDCommand, "lcd");
 	
 	AddTimerCallback("TIM8CH1", &Timer2CH1Callback);
 	
+	LCDSendString("Hello Robot!");
+	
 	while(true)
 	{
+		
 		Delay(1);
 		ExecuteAllQueueCommands();
 		i++;

@@ -37,6 +37,8 @@
 ".\objects\commandsystem.o"
 ".\objects\stringclass.o"
 ".\objects\timercallback.o"
+".\objects\lcdsystem.o"
+".\objects\servosystem.o"
 --strict --scatter ".\Objects\StarterTemplate.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

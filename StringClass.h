@@ -3,6 +3,7 @@
 
 #include "ctype.h"
 #include <string.h>
+#include <stdio.h>
 
 #define BufferSize 128
 
@@ -21,6 +22,7 @@ public:
 	void ToUpper();
 	bool DoesWordEqualTo(unsigned int wordN, const char* word); //"String 1" -> DoesWordEqualTo(2, "1") -> true
 	bool DoesWordEqualTo(unsigned int wordN, TString word);
+	void RemoveFirstWords(unsigned int wordCount);
 	void Clear();
 	int GetLength();
 
@@ -30,6 +32,7 @@ public:
 	TString &operator=(const TString &lr);
 	TString &operator=(const char* lr);
 	TString &operator+=(const char &str);
+	TString &operator+=(const unsigned int &num);
 	TString &operator+=(const TString &str);
 	bool operator==(TString &other) const;
 	bool operator==(const char* other) const;
