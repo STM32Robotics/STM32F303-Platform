@@ -3,8 +3,8 @@
 
 #define DC_M1_BW        0x02U
 #define DC_M1_FW        0x01U
-#define DC_M2_BW        0x02U
-#define DC_M2_FW        0x01U
+#define DC_M2_BW        0x01U
+#define DC_M2_FW        0x02U
 #define DCMOTOR1_MASK   (DC_M1_BW | DC_M1_FW)
 #define DCMOTOR2_MASK   (DC_M2_BW | DC_M2_FW)
 #define MAXSPEED        100U
@@ -25,7 +25,7 @@ typedef enum _motor_sel{
 
 typedef enum _motor_dir{
     FORWARD,
-    BACKWARD  
+    BACKWARD,
 }motor_dir;
 
 void DCMotor(motor_sel which_motor, unsigned char const speed, motor_dir direction);

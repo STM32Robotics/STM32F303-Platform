@@ -14,7 +14,7 @@ static NVIC_InitTypeDef nvic_initStruct;
 #define PERIOD 0x0000FFFF
 #define VANE_NUM 27.0
 #define GEAR_RATIO 22.5
-#define WHELL_ROTATION 16.65
+#define WHEEL_ROTATION 16.65
 #define NUM_US_IN_SEC 1000000.0
 
 typedef struct
@@ -85,7 +85,7 @@ uint32_t GetSpeed()
    prd = period;
     
    freq = (1.0/prd);
-   speed = (((freq * NUM_US_IN_SEC) / VANE_NUM ) / GEAR_RATIO) * WHELL_ROTATION;
+   speed = (((freq * NUM_US_IN_SEC) / VANE_NUM ) / GEAR_RATIO) * WHEEL_ROTATION;
 
    return (uint32_t)speed;
 }

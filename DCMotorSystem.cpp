@@ -15,7 +15,7 @@ static TIM_OCInitTypeDef t1oc_config;
 
 static TIM_BDTRInitTypeDef bdtr_initStruct;
 
-void dcmotor_init(void)
+void DCMotorInit(void)
 {
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 
@@ -33,7 +33,7 @@ void dcmotor_init(void)
     /* Initialize GPIO Signal for controlling DC Motor Direction*/
     pa_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
     pa_InitStruct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
-    pa_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
+    pa_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
     pa_InitStruct.GPIO_Speed = GPIO_Speed_Level_3;    
     pa_InitStruct.GPIO_OType = GPIO_OType_PP;
     
@@ -80,7 +80,7 @@ void dcmotor_init(void)
     TIM_Cmd(TIM1, ENABLE);
 }
 
-void dcmotor(motor_sel which_motor, unsigned char const speed, motor_dir direction)
+void DCMotor(motor_sel which_motor, unsigned char const speed, motor_dir direction)
 {
     unsigned char temp_speed = speed;
     
@@ -88,6 +88,13 @@ void dcmotor(motor_sel which_motor, unsigned char const speed, motor_dir directi
         temp_speed = MAXSPEED;
     else
         temp_speed = speed;
+		
+		double slope1 = 56.0;
+		double slope2 = 100.0;
+		double x = (double)temp_speed;
+		double b = 54.0;
+		
+		temp_speed = (unsigned char)(slope1 / slope2 * x + b);
     
     if(which_motor == M_ONE) {
             CLR_BITS(GPIOA->ODR, DCMOTOR1_MASK);
@@ -96,17 +103,15 @@ void dcmotor(motor_sel which_motor, unsigned char const speed, motor_dir directi
             SET_BITS(GPIOA->ODR, DC_M1_FW);
         else
             SET_BITS(GPIOA->ODR, DC_M1_BW);
-
-        TIM1->CCR1 = temp_speed;
+        TIM1->CCR2 = temp_speed;
         
     } else {
         CLR_BITS(GPIOB->ODR, DCMOTOR2_MASK);
-        
-        if (direction == FORWARD)      
+
+         if (direction == FORWARD)      
             SET_BITS(GPIOB->ODR, DC_M2_FW);
         else
             SET_BITS(GPIOB->ODR, DC_M2_BW);
-
-               TIM1->CCR2 = temp_speed;
+				TIM1->CCR1 = temp_speed;
     }
 }

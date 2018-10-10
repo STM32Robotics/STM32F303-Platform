@@ -25,4 +25,4 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h StepperMotor.h RS232.h \
   CommandSystem.h TimerCallback.h LCDSystem.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h DCMotorSystem.h

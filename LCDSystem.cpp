@@ -178,7 +178,7 @@ void LCDSendString (TString str)
 	}
 }
 
-void LCDSetPos (LCDLINE lineSel , unsigned char offset)
+void LCDSetPos(LCDLINE lineSel , unsigned char offset)
 {
 	if (lineSel == Second) {
 		if (offset <= 19) {

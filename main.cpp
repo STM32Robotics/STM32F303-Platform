@@ -1,4 +1,5 @@
 #include "main.h"
+#include "DCMotorSystem.h"
 
 //https://www.keil.com/update/sw/mdk/5.26
 
@@ -179,6 +180,37 @@ extern "C"
 	}
 }
 
+int SpeedM1 = 0;
+int SpeedM2 = 0;
+motor_dir Dir1 = FORWARD;
+motor_dir Dir2 = FORWARD;
+
+void MotorCommand(TString args)
+{
+	SpeedM1 = args.GetIntFromWord(2);
+	SpeedM2 = args.GetIntFromWord(3);
+
+	if(SpeedM1 < 0)
+	{
+		Dir1 = BACKWARD;
+		SpeedM1 = -SpeedM1;
+	}
+	else
+	{
+		Dir1 = FORWARD;
+	}
+	
+	if(SpeedM2 < 0)
+	{
+		Dir2 = BACKWARD;
+		SpeedM2 = -SpeedM2;
+	}
+	else
+	{
+		Dir2 = FORWARD;
+	}
+}
+
 //96 bits
 //Unique ID found at 0x1FFFF7AC
 //Address offset 0x00 32 bits -> BCD format
@@ -186,12 +218,12 @@ extern "C"
 //Address offset 0x08 32 bits -> 64-95 -> Lot number
 
 #define STM32_UUID ((uint32_t*)0x1FFFF7AC)
-
 int main()
 {
 	SystemInit();
 	SetLEDColor(LED_White);
 	SysTickInit();
+	DCMotorInit();
 	SetLEDColor(LED_Red);
 	Delay(100);
 	InitCommandSystem();
@@ -227,10 +259,10 @@ int main()
 	AddCommandHandler(&PingPongCommand, "ping");
 	AddCommandHandler(&ReportOnline, "online");
 	AddCommandHandler(&LCDCommand, "lcd");
+	AddCommandHandler(&MotorCommand, "motor");
 	
 	AddTimerCallback("TIM8CH1", &Timer2CH1Callback);
-	
-	LCDSendString("Hello Robot!");
+	LCDSendString("Booted");
 	
 	while(true)
 	{
@@ -243,6 +275,8 @@ int main()
 			LEDToggle();
 			i = 0;
 		}
+		DCMotor(M_ONE, SpeedM1, Dir1);
+		DCMotor(M_TWO, SpeedM2, Dir2);
 		/*if(step == 1)
 			GPIOC->ODR = GPIO_Pin_6;
 		else if(step == 2)

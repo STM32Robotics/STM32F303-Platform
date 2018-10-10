@@ -86,14 +86,15 @@ void RS232SendString(char* str)
 }
 
 TString DataBuffer;
-
+TString LastData;
+char data;
 extern "C"
 {
 	void USART1_IRQHandler()
 	{
 		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) //Check if we can read
 		{
-			char data = (char)USART_ReceiveData(USART1);
+			data = (char)USART_ReceiveData(USART1);
 			if(data == '\r') //End of string
 			{
 				if(DataBuffer.GetLength() == 0) //Scrap empty buffer and don't bother
@@ -101,6 +102,12 @@ extern "C"
 					DataBuffer.Clear();
 					return;
 				}
+				if(DataBuffer == LastData)
+				{
+					DataBuffer.Clear();
+					return;
+				}
+				LastData = DataBuffer;
 				AddCommandToQueue(DataBuffer);
 				DataBuffer.Clear();
 			}

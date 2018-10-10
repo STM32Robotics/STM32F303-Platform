@@ -1,4 +1,5 @@
 #include "StringClass.h"
+#include "LCDSystem.h"
 
 void TString::ResetBuffer()
 {
@@ -38,6 +39,107 @@ void TString::ToUpper()
 {
 	for (unsigned int i = 0; i < StrSize; i++)
 		Buffer[i] = toupper(Buffer[i]);
+}
+
+int fast_atoi(char* str, int len)
+{
+	int val = 0;
+	bool negative = false;
+	for(int i = 0; i < len; i++)
+	{
+		if(str[i] == '-')
+		{
+			negative = true;
+			continue;
+		}
+		if(str[i] >= '0' && str[i] <= '9')
+			val = val * 10 + (str[i] - '0');
+	}
+	if(negative)
+		val = -val;
+	return val;
+}
+
+int TString::GetIntFromWord(unsigned int wordN)
+{
+	if (wordN == 0)
+		return 0;
+
+	char Word[25] = { 0 };
+	unsigned int WordIndex = 0;
+	bool FoundWord = false;
+	unsigned int CurrentIndex = 1;
+
+	for (unsigned int i = 0; i < StrSize; i++)
+	{
+		if ((Buffer[i] == ' ' || i == StrSize - 1) && CurrentIndex == wordN)
+		{
+			FoundWord = true;
+			if (i == StrSize - 1)
+				Word[WordIndex] = Buffer[i];
+			break;
+		}
+		else if(Buffer[i] == ' ')
+		{
+			for (unsigned int j = 0; j < 25; j++)
+				Word[j] = 0;
+			CurrentIndex++;
+			WordIndex = 0;
+		}
+		else
+		{
+			Word[WordIndex] = Buffer[i];
+			WordIndex++;
+		}
+	}
+
+	if (!FoundWord)
+		return 0;
+
+	int i = fast_atoi(Word, WordIndex + 1);
+	return i;
+}
+
+bool TString::DoesWordContain(unsigned int wordN, const char ch)
+{
+	if (wordN == 0)
+		return false;
+
+	char Word[25] = { 0 };
+	unsigned int WordIndex = 0;
+	bool FoundWord = false;
+	unsigned int CurrentIndex = 1;
+
+	for (unsigned int i = 0; i < StrSize; i++)
+	{
+		if ((Buffer[i] == ' ' || i == StrSize - 1) && CurrentIndex == wordN)
+		{
+			FoundWord = true;
+			if (i == StrSize - 1)
+				Word[WordIndex] = Buffer[i];
+			break;
+		}
+		else if(Buffer[i] == ' ')
+		{
+			for (unsigned int j = 0; j < 25; j++)
+				Word[j] = 0;
+			CurrentIndex++;
+			WordIndex = 0;
+		}
+		else
+		{
+			Word[WordIndex] = Buffer[i];
+			WordIndex++;
+		}
+	}
+
+	if (!FoundWord)
+		return false;
+
+	for (unsigned int i = 0; i < 25; i++)
+		if (Word[i] == ch)
+			return true;
+	return false;
 }
 
 bool TString::DoesWordEqualTo(unsigned int wordN, const char* word)
@@ -216,6 +318,17 @@ TString &TString::operator+=(const char &str)
 	{
 		StrSize = StrSize - 1;
 		return *this;
+	}
+	return *this;
+}
+
+TString &TString::operator+=(const int &num)
+{
+	char str[128];
+	snprintf(str, 128, "%d", num);
+	for(unsigned int i = 0; i < strlen(str); i++)
+	{
+		*this += str[i];
 	}
 	return *this;
 }
