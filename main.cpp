@@ -123,8 +123,10 @@ void PingPongCommand(TString args)
 	RS232SendString("Pong");
 }
 
+bool LinkedConnection = false;
 void ReportOnline(TString args)
 {
+	LinkedConnection = true;
 	RS232SendString("Is Online");
 }
 
@@ -243,6 +245,7 @@ int main()
 	SetLEDColorEx("off");
 	LEDToggle();
 	unsigned int i = 0;
+	unsigned int j = 0;
 	
 	TString arg = "UID: ";
 	uint32_t idPart1 = STM32_UUID[0];
@@ -270,11 +273,34 @@ int main()
 		Delay(1);
 		ExecuteAllQueueCommands();
 		i++;
+		j++;
 		if(i >= 50)
 		{
 			LEDToggle();
 			i = 0;
 		}
+		if(j >= 200)
+		{
+			if(!LinkedConnection)
+			{
+				LCDClearLine(Second);
+				LCDSetPos(Second, 0);
+				LCDSendString("Disconnected");
+				SpeedM1 = 0;
+				SpeedM2 = 0;
+				SetLEDColor(LED_Red);
+			}
+			else
+			{
+				LCDClearLine(Second);
+				LCDSetPos(Second, 0);
+				LCDSendString("Connected");
+				SetLEDColor(LED_Green);
+			}
+			LinkedConnection = false;
+			j = 0;
+		}
+		
 		DCMotor(M_ONE, SpeedM1, Dir1);
 		DCMotor(M_TWO, SpeedM2, Dir2);
 		/*if(step == 1)

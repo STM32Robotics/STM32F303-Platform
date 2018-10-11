@@ -89,10 +89,10 @@ void DCMotor(motor_sel which_motor, unsigned char const speed, motor_dir directi
     else
         temp_speed = speed;
 		
-		double slope1 = 56.0;
+		double slope1 = 52.0;
 		double slope2 = 100.0;
 		double x = (double)temp_speed;
-		double b = 54.0;
+		double b = 50.0;
 		
 		temp_speed = (unsigned char)(slope1 / slope2 * x + b);
     

@@ -1040,6 +1040,7 @@ Section Cross References
     main.o(.ARM.exidx.text._Z15PingPongCommand7TString) refers to Unwind-EHABI.cpp.o(.text.__aeabi_unwind_cpp_pr0) for __aeabi_unwind_cpp_pr0
     main.o(.ARM.exidx.text._Z15PingPongCommand7TString) refers to main.o(.text._Z15PingPongCommand7TString) for [Anonymous Symbol]
     main.o(.text._Z12ReportOnline7TString) refers to rs232.o(.text._Z15RS232SendStringPKc) for RS232SendString(const char*)
+    main.o(.text._Z12ReportOnline7TString) refers to main.o(.bss..L_MergedGlobals) for [Anonymous Symbol]
     main.o(.ARM.exidx.text._Z12ReportOnline7TString) refers to Unwind-EHABI.cpp.o(.text.__aeabi_unwind_cpp_pr0) for __aeabi_unwind_cpp_pr0
     main.o(.ARM.exidx.text._Z12ReportOnline7TString) refers to main.o(.text._Z12ReportOnline7TString) for [Anonymous Symbol]
     main.o(.text._Z10LCDCommand7TString) refers to stringclass.o(.text._ZN7TString15DoesWordEqualToEjPKc) for TString::DoesWordEqualTo(unsigned, const char*)
@@ -1089,10 +1090,12 @@ Section Cross References
     main.o(.text.main) refers to lcdsystem.o(.text._Z13LCDSendString7TString) for LCDSendString(TString)
     main.o(.text.main) refers to utilities.o(.text._Z5Delayj) for Delay(unsigned)
     main.o(.text.main) refers to commandsystem.o(.text._Z23ExecuteAllQueueCommandsv) for ExecuteAllQueueCommands()
-    main.o(.text.main) refers to dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir) for DCMotor(_motor_sel, unsigned char, _motor_dir)
-    main.o(.text.main) refers to utilities.o(.text._Z11SetLEDColoriii) for SetLEDColor(int, int, int)
-    main.o(.text.main) refers to main.o(.rodata.str1.1) for .L.str.14
+    main.o(.text.main) refers to lcdsystem.o(.text._Z12LCDClearLine9e_lcdline) for LCDClearLine(e_lcdline)
+    main.o(.text.main) refers to lcdsystem.o(.text._Z9LCDSetPos9e_lcdlineh) for LCDSetPos(e_lcdline, unsigned char)
     main.o(.text.main) refers to stringclass.o(.text._ZN7TStringC2EPKc) for TString::TString(const char*)
+    main.o(.text.main) refers to utilities.o(.text._Z11SetLEDColoriii) for SetLEDColor(int, int, int)
+    main.o(.text.main) refers to dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir) for DCMotor(_motor_sel, unsigned char, _motor_dir)
+    main.o(.text.main) refers to main.o(.rodata.str1.1) for .L.str.14
     main.o(.text.main) refers to stringclass.o(.text._ZN7TStringpLERKj) for TString::operator +=(const unsigned&)
     main.o(.text.main) refers to main.o(.text._Z11LEDCallback7TString) for LEDCallback(TString)
     main.o(.text.main) refers to commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc) for AddCommandHandler(void(*)(TString), const char*)
@@ -3602,7 +3605,6 @@ Removing Unused input sections from the image.
     Removing lcdsystem.o(.text._Z13LCDSendStringPc), (24 bytes).
     Removing lcdsystem.o(.ARM.exidx.text._Z13LCDSendStringPc), (8 bytes).
     Removing lcdsystem.o(.ARM.exidx.text._Z13LCDSendString7TString), (8 bytes).
-    Removing lcdsystem.o(.text._Z9LCDSetPos9e_lcdlineh), (76 bytes).
     Removing lcdsystem.o(.ARM.exidx.text._Z9LCDSetPos9e_lcdlineh), (8 bytes).
     Removing lcdsystem.o(.ARM.exidx.text._Z12LCDClearLine9e_lcdline), (8 bytes).
     Removing lcdsystem.o(.text._Z16LCD_Clear_Screenv), (8 bytes).
@@ -3730,7 +3732,7 @@ Removing Unused input sections from the image.
     Removing libunwind.cpp.o(.ARM.exidx.text._ZN9libunwind13Registers_arm15getRegisterNameEi), (8 bytes).
     Removing libunwind.cpp.o(.rodata._ZTVN9libunwind12UnwindCursorINS_17LocalAddressSpaceENS_13Registers_armEEE), (72 bytes).
 
-1612 unused section(s) (total 36358 bytes) removed from the image.
+1611 unused section(s) (total 36282 bytes) removed from the image.
 
 ==============================================================================
 
@@ -3740,171 +3742,171 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor_intlibspace.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_ctype_table.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  mutex_dummy.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch_hlt.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit_hlt.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command_hlt.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch_hlt.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit_hlt.o ABSOLUTE
     ../clib/arm_runtime.c                    0x00000000   Number         0  init_aeabi.o ABSOLUTE
     ../clib/arm_runtime.c                    0x00000000   Number         0  init_aeabi.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/bigflt.c                         0x00000000   Number         0  bigflt0.o ABSOLUTE
     ../clib/btod.s                           0x00000000   Number         0  btod.o ABSOLUTE
     ../clib/btod_accurate.c                  0x00000000   Number         0  btod_accurate.o ABSOLUTE
     ../clib/btod_accurate.c                  0x00000000   Number         0  btod_accurate_common.o ABSOLUTE
-    ../clib/ctype.c                          0x00000000   Number         0  toupper.o ABSOLUTE
     ../clib/ctype.c                          0x00000000   Number         0  tolower.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_init.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_free_mt.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_extend_mt.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc_mt.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_extend.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_final.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_init_mt.o ABSOLUTE
+    ../clib/ctype.c                          0x00000000   Number         0  toupper.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_final_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_final.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_free_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_extend.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_extend_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_init.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_free.o ABSOLUTE
-    ../clib/heap2.c                          0x00000000   Number         0  fdtree.o ABSOLUTE
-    ../clib/heap2.c                          0x00000000   Number         0  heap2mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_init_mt.o ABSOLUTE
     ../clib/heap2.c                          0x00000000   Number         0  heap2.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  init_alloc.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  heapstubs.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  hguard.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  heap2mt.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  fdtree.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  free.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  hguard.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  init_alloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  term_alloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  heapstubs.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  malloc.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  term_alloc.o ABSOLUTE
-    ../clib/heapaux.c                        0x00000000   Number         0  heapauxa.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
+    ../clib/heapaux.c                        0x00000000   Number         0  heapauxa.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/locale.c                         0x00000000   Number         0  _c16rtomb.o ABSOLUTE
-    ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/locale.s                         0x00000000   Number         0  lc_ctype_c.o ABSOLUTE
-    ../clib/longlong.s                       0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/longlong.s                       0x00000000   Number         0  lludiv10.o ABSOLUTE
-    ../clib/maybe.s                          0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/longlong.s                       0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/maybe.s                          0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7em.o ABSOLUTE
+    ../clib/maybe.s                          0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_v6.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7em.o ABSOLUTE
     ../clib/misc.s                           0x00000000   Number         0  printf_stubs.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  noretval__2snprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_wchar.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_truncate.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec_accurate.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_str.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_charcount.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _snputc.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_wctomb.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_longlong_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_int.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_int_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_hex.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  vsprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __2snprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_wchar.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2snprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll_ptr.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec_accurate.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_ll.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_str.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ptr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_int.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ptr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll_ptr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll_ptr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_oct_int_ll.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_hex.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_truncate.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_charcount.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_l.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lli.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_a.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_llu.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_c.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_s.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_p.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_n.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_x.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_ll.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_o.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_i.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_u.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_e.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_g.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lld.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_c.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_llx.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_llo.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_ls.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lc.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_l.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_ll.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lld.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lli.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_a.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_g.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_e.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_u.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_i.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_llu.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_o.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_p.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_x.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_n.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
-    ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  abort.o ABSOLUTE
-    ../clib/string.c                         0x00000000   Number         0  strcpy.o ABSOLUTE
+    ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strlen.o ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  strcpy.o ABSOLUTE
     ../fplib/daddsub.s                       0x00000000   Number         0  daddsub_clz.o ABSOLUTE
     ../fplib/ddiv.s                          0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/dfix.s                          0x00000000   Number         0  dfix.o ABSOLUTE
@@ -4177,153 +4179,155 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08001c3c   Section        0  utilities.o(.text._Z12GetClockFreqv)
     [Anonymous Symbol]                       0x08001c5c   Section        0  lcdsystem.o(.text._Z12LCDClearLine9e_lcdline)
     [Anonymous Symbol]                       0x08001cec   Section        0  main.o(.text._Z12MotorCommand7TString)
-    __arm_cp.15_0                            0x08001d40   Number         4  main.o(.text._Z12MotorCommand7TString)
-    [Anonymous Symbol]                       0x08001d44   Section        0  main.o(.text._Z12ReportOnline7TString)
-    [Anonymous Symbol]                       0x08001d6c   Section        0  main.o(.text._Z12ResetCommand7TString)
-    __arm_cp.3_0                             0x08001db0   Number         4  main.o(.text._Z12ResetCommand7TString)
-    __arm_cp.3_2                             0x08001dc4   Number         4  main.o(.text._Z12ResetCommand7TString)
-    [Anonymous Symbol]                       0x08001dc8   Section        0  lcdsystem.o(.text._Z13LCDSendString7TString)
-    [Anonymous Symbol]                       0x08001dfc   Section        0  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_0                             0x08001ed4   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_1                             0x08001ed8   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_2                             0x08001edc   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_3                             0x08001ee0   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_4                             0x08001ee4   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_5                             0x08001ee8   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_6                             0x08001eec   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_7                             0x08001ef0   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_12                            0x08001f78   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_13                            0x08001f7c   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_14                            0x08001f80   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    __arm_cp.0_15                            0x08001f84   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
-    [Anonymous Symbol]                       0x08001f88   Section        0  main.o(.text._Z15PingPongCommand7TString)
-    [Anonymous Symbol]                       0x08001fac   Section        0  rs232.o(.text._Z15RS232SendString7TString)
-    [Anonymous Symbol]                       0x08001ff4   Section        0  rs232.o(.text._Z15RS232SendStringPKc)
-    __arm_cp.2_0                             0x08002028   Number         4  rs232.o(.text._Z15RS232SendStringPKc)
-    [Anonymous Symbol]                       0x0800202c   Section        0  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
-    __arm_cp.1_0                             0x08002054   Number         4  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
-    [Anonymous Symbol]                       0x08002058   Section        0  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
-    __arm_cp.1_0                             0x0800207c   Number         4  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
-    [Anonymous Symbol]                       0x08002080   Section        0  commandsystem.o(.text._Z17AddCommandToQueue7TString)
-    [Anonymous Symbol]                       0x080020bc   Section        0  commandsystem.o(.text._Z17InitCommandSystemv)
-    [Anonymous Symbol]                       0x080020dc   Section        0  timercallback.o(.text._Z17InitTimerCallbackv)
-    [Anonymous Symbol]                       0x080020fc   Section        0  main.o(.text._Z17Timer2CH1Callbackv)
-    [Anonymous Symbol]                       0x08002100   Section        0  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
-    __arm_cp.2_0                             0x08002128   Number         4  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
-    __arm_cp.2_1                             0x0800212c   Number         4  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
-    [Anonymous Symbol]                       0x08002130   Section        0  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    __arm_cp.2_0                             0x08002218   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    __arm_cp.2_1                             0x0800221c   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    __arm_cp.2_2                             0x08002220   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    __arm_cp.2_5                             0x0800223c   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    __arm_cp.2_6                             0x08002240   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    [Anonymous Symbol]                       0x08002244   Section        0  utilities.o(.text._Z5Delayj)
-    __arm_cp.1_0                             0x08002264   Number         4  utilities.o(.text._Z5Delayj)
-    __arm_cp.1_1                             0x08002268   Number         4  utilities.o(.text._Z5Delayj)
-    __arm_cp.1_2                             0x0800226c   Number         4  utilities.o(.text._Z5Delayj)
-    [Anonymous Symbol]                       0x08002270   Section        0  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
-    __arm_cp.1_2                             0x080022f8   Number         4  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
-    __arm_cp.1_3                             0x080022fc   Number         4  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
-    [Anonymous Symbol]                       0x08002300   Section        0  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_2                             0x0800241c   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_3                             0x08002420   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_4                             0x08002424   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_6                             0x08002428   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_7                             0x0800242c   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    __arm_cp.0_8                             0x08002430   Number         4  lcdsystem.o(.text._Z7LCDInitv)
-    [Anonymous Symbol]                       0x08002434   Section        0  utilities.o(.text._Z7LEDInitv)
-    [Anonymous Symbol]                       0x08002456   Section        0  utilities.o(.text._Z9LEDTogglev)
-    [Anonymous Symbol]                       0x08002470   Section        0  rs232.o(.text._Z9RS232Initv)
-    __arm_cp.0_0                             0x080024ec   Number         4  rs232.o(.text._Z9RS232Initv)
-    __arm_cp.0_1                             0x080024f0   Number         4  rs232.o(.text._Z9RS232Initv)
-    __arm_cp.0_3                             0x080024f4   Number         4  rs232.o(.text._Z9RS232Initv)
-    __arm_cp.0_4                             0x080024f8   Number         4  rs232.o(.text._Z9RS232Initv)
-    [Anonymous Symbol]                       0x080024fc   Section        0  rs232.o(.text._Z9RS232Sendc)
-    __arm_cp.1_0                             0x0800251c   Number         4  rs232.o(.text._Z9RS232Sendc)
-    [Anonymous Symbol]                       0x08002520   Section        0  stringclass.o(.text._Z9fast_atoiPci)
-    [Anonymous Symbol]                       0x08002560   Section        0  lcdsystem.o(.text._ZL16LCD_Send_HNibblet)
-    _ZL16LCD_Send_HNibblet                   0x08002561   Thumb Code    56  lcdsystem.o(.text._ZL16LCD_Send_HNibblet)
-    [Anonymous Symbol]                       0x08002594   Section        0  main.o(.text._ZL18__NVIC_SystemResetv)
-    _ZL18__NVIC_SystemResetv                 0x08002595   Thumb Code    36  main.o(.text._ZL18__NVIC_SystemResetv)
-    __arm_cp.4_0                             0x080025b0   Number         4  main.o(.text._ZL18__NVIC_SystemResetv)
-    __arm_cp.4_1                             0x080025b4   Number         4  main.o(.text._ZL18__NVIC_SystemResetv)
-    [Anonymous Symbol]                       0x080025b8   Section        0  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
-    _ZL8LCD_Sendt13LCD_SEND_TYPE             0x080025b9   Thumb Code   252  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
-    __arm_cp.2_0                             0x080026a8   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
-    __arm_cp.2_1                             0x080026ac   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
-    __arm_cp.2_2                             0x080026b0   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
-    [Anonymous Symbol]                       0x080026b4   Section        0  stringclass.o(.text._ZN7TString14GetIntFromWordEj)
-    [Anonymous Symbol]                       0x0800272a   Section        0  stringclass.o(.text._ZN7TString15DoesWordEqualToEjPKc)
-    [Anonymous Symbol]                       0x080027c0   Section        0  stringclass.o(.text._ZN7TString15DoesWordEqualToEjS_)
-    [Anonymous Symbol]                       0x0800286e   Section        0  stringclass.o(.text._ZN7TString16RemoveFirstWordsEj)
-    [Anonymous Symbol]                       0x080028d6   Section        0  stringclass.o(.text._ZN7TString5ClearEv)
-    [Anonymous Symbol]                       0x080028f0   Section        0  stringclass.o(.text._ZN7TString9GetLengthEv)
-    [Anonymous Symbol]                       0x080028f4   Section        0  stringclass.o(.text._ZN7TStringC2EPKc)
-    [Anonymous Symbol]                       0x08002926   Section        0  stringclass.o(.text._ZN7TStringC2Ev)
-    [Anonymous Symbol]                       0x08002940   Section        0  stringclass.o(.text._ZN7TStringaSEPKc)
-    [Anonymous Symbol]                       0x08002970   Section        0  stringclass.o(.text._ZN7TStringaSERKS_)
-    [Anonymous Symbol]                       0x080029a6   Section        0  stringclass.o(.text._ZN7TStringixEj)
-    [Anonymous Symbol]                       0x080029ba   Section        0  stringclass.o(.text._ZN7TStringpLERKS_)
-    [Anonymous Symbol]                       0x080029ee   Section        0  stringclass.o(.text._ZN7TStringpLERKc)
-    [Anonymous Symbol]                       0x08002a04   Section        0  stringclass.o(.text._ZN7TStringpLERKj)
-    __arm_cp.20_0                            0x08002a38   Number         4  stringclass.o(.text._ZN7TStringpLERKj)
-    [Anonymous Symbol]                       0x08002a3c   Section        0  stringclass.o(.text._ZNK7TStringeqEPKc)
-    [Anonymous Symbol]                       0x08002a68   Section        0  stringclass.o(.text._ZNK7TStringeqERS_)
-    [Anonymous Symbol]                       0x08002a98   Section        0  main.o(.text.main)
-    __arm_cp.16_0                            0x08002bf8   Number         4  main.o(.text.main)
-    __arm_cp.16_1                            0x08002bfc   Number         4  main.o(.text.main)
-    __arm_cp.16_3                            0x08002c10   Number         4  main.o(.text.main)
-    __arm_cp.16_4                            0x08002c14   Number         4  main.o(.text.main)
-    __arm_cp.16_6                            0x08002c20   Number         4  main.o(.text.main)
-    __arm_cp.16_7                            0x08002c24   Number         4  main.o(.text.main)
-    __arm_cp.16_8                            0x08002c28   Number         4  main.o(.text.main)
-    __arm_cp.16_9                            0x08002c2c   Number         4  main.o(.text.main)
-    __arm_cp.16_11                           0x08002c34   Number         4  main.o(.text.main)
-    __arm_cp.16_13                           0x08002c40   Number         4  main.o(.text.main)
-    __arm_cp.16_15                           0x08002c4c   Number         4  main.o(.text.main)
-    __arm_cp.16_17                           0x08002c58   Number         4  main.o(.text.main)
-    __arm_cp.16_19                           0x08002c60   Number         4  main.o(.text.main)
-    __arm_cp.16_21                           0x08002c6c   Number         4  main.o(.text.main)
-    __arm_cp.16_24                           0x08002c80   Number         4  main.o(.text.main)
-    __arm_cp.16_25                           0x08002c84   Number         4  main.o(.text.main)
-    i._is_digit                              0x08002c88   Section        0  __printf_wp.o(i._is_digit)
-    x$fpl$dadd                               0x08002c98   Section      336  daddsub_clz.o(x$fpl$dadd)
-    $v0                                      0x08002c98   Number         0  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x08002ca9   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$dfix                               0x08002de8   Section       94  dfix.o(x$fpl$dfix)
-    $v0                                      0x08002de8   Number         0  dfix.o(x$fpl$dfix)
-    x$fpl$dfltu                              0x08002e46   Section       38  dflt_clz.o(x$fpl$dfltu)
-    $v0                                      0x08002e46   Number         0  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dmul                               0x08002e6c   Section      340  dmul.o(x$fpl$dmul)
-    $v0                                      0x08002e6c   Number         0  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x08002fc0   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x08002fc0   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x0800305c   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x0800305c   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$dsub                               0x08003068   Section      468  daddsub_clz.o(x$fpl$dsub)
-    $v0                                      0x08003068   Number         0  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x08003079   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$fpinit                             0x0800323c   Section       26  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x0800323c   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x08003256   Section       17  __printf_flags_ss_wp.o(.constdata)
-    x$fpl$usenofp                            0x08003256   Section        0  usenofp.o(x$fpl$usenofp)
-    maptable                                 0x08003256   Data          17  __printf_flags_ss_wp.o(.constdata)
-    [Anonymous Symbol]                       0x08003267   Section        0  main.o(.rodata.str1.1)
-    .L.str.3                                 0x08003267   Data          29  main.o(.rodata.str1.1)
-    .L.str.5                                 0x08003284   Data          30  main.o(.rodata.str1.1)
-    .L.str.1                                 0x080032a2   Data          31  main.o(.rodata.str1.1)
-    .L.str.7                                 0x080032c1   Data          32  main.o(.rodata.str1.1)
-    .L.str.10                                0x080032e1   Data           8  main.o(.rodata.str1.1)
-    .L.str.2                                 0x080032e9   Data           4  main.o(.rodata.str1.1)
-    .L.str.8                                 0x080032ed   Data           6  main.o(.rodata.str1.1)
-    .L.str.4                                 0x080032f3   Data           5  main.o(.rodata.str1.1)
-    .L.str.14                                0x080032f8   Data           4  main.o(.rodata.str1.1)
-    .L.str.12                                0x080032fc   Data           5  main.o(.rodata.str1.1)
-    .L.str                                   0x08003301   Data           6  main.o(.rodata.str1.1)
-    .L.str.6                                 0x08003307   Data           7  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800330e   Section        0  stringclass.o(.rodata.str1.1)
-    .L.str                                   0x0800330e   Data           3  stringclass.o(.rodata.str1.1)
-    .init_array                              0x08003340   Section        0  init_aeabi.o(.init_array)
+    [Anonymous Symbol]                       0x08001d40   Section        0  main.o(.text._Z12ReportOnline7TString)
+    __arm_cp.6_0                             0x08001d68   Number         4  main.o(.text._Z12ReportOnline7TString)
+    [Anonymous Symbol]                       0x08001d78   Section        0  main.o(.text._Z12ResetCommand7TString)
+    __arm_cp.3_0                             0x08001dbc   Number         4  main.o(.text._Z12ResetCommand7TString)
+    __arm_cp.3_2                             0x08001dd0   Number         4  main.o(.text._Z12ResetCommand7TString)
+    [Anonymous Symbol]                       0x08001dd4   Section        0  lcdsystem.o(.text._Z13LCDSendString7TString)
+    [Anonymous Symbol]                       0x08001e08   Section        0  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_0                             0x08001ee0   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_1                             0x08001ee4   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_2                             0x08001ee8   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_3                             0x08001eec   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_4                             0x08001ef0   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_5                             0x08001ef4   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_6                             0x08001ef8   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_7                             0x08001efc   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_12                            0x08001f84   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_13                            0x08001f88   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_14                            0x08001f8c   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    __arm_cp.0_15                            0x08001f90   Number         4  main.o(.text._Z13SetLEDColorEx7TString)
+    [Anonymous Symbol]                       0x08001f94   Section        0  main.o(.text._Z15PingPongCommand7TString)
+    [Anonymous Symbol]                       0x08001fb8   Section        0  rs232.o(.text._Z15RS232SendString7TString)
+    [Anonymous Symbol]                       0x08002000   Section        0  rs232.o(.text._Z15RS232SendStringPKc)
+    __arm_cp.2_0                             0x08002034   Number         4  rs232.o(.text._Z15RS232SendStringPKc)
+    [Anonymous Symbol]                       0x08002038   Section        0  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
+    __arm_cp.1_0                             0x08002060   Number         4  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
+    [Anonymous Symbol]                       0x08002064   Section        0  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
+    __arm_cp.1_0                             0x08002088   Number         4  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
+    [Anonymous Symbol]                       0x0800208c   Section        0  commandsystem.o(.text._Z17AddCommandToQueue7TString)
+    [Anonymous Symbol]                       0x080020c8   Section        0  commandsystem.o(.text._Z17InitCommandSystemv)
+    [Anonymous Symbol]                       0x080020e8   Section        0  timercallback.o(.text._Z17InitTimerCallbackv)
+    [Anonymous Symbol]                       0x08002108   Section        0  main.o(.text._Z17Timer2CH1Callbackv)
+    [Anonymous Symbol]                       0x0800210c   Section        0  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
+    __arm_cp.2_0                             0x08002134   Number         4  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
+    __arm_cp.2_1                             0x08002138   Number         4  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
+    [Anonymous Symbol]                       0x0800213c   Section        0  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    __arm_cp.2_0                             0x08002224   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    __arm_cp.2_1                             0x08002228   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    __arm_cp.2_2                             0x0800222c   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    __arm_cp.2_5                             0x08002248   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    __arm_cp.2_6                             0x0800224c   Number         4  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    [Anonymous Symbol]                       0x08002250   Section        0  utilities.o(.text._Z5Delayj)
+    __arm_cp.1_0                             0x08002270   Number         4  utilities.o(.text._Z5Delayj)
+    __arm_cp.1_1                             0x08002274   Number         4  utilities.o(.text._Z5Delayj)
+    __arm_cp.1_2                             0x08002278   Number         4  utilities.o(.text._Z5Delayj)
+    [Anonymous Symbol]                       0x08002280   Section        0  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
+    __arm_cp.1_2                             0x08002308   Number         4  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
+    __arm_cp.1_3                             0x0800230c   Number         4  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
+    [Anonymous Symbol]                       0x08002310   Section        0  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_0                             0x0800242c   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_2                             0x08002430   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_3                             0x08002434   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_4                             0x08002438   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_6                             0x0800243c   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_7                             0x08002440   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    __arm_cp.0_8                             0x08002444   Number         4  lcdsystem.o(.text._Z7LCDInitv)
+    [Anonymous Symbol]                       0x08002448   Section        0  utilities.o(.text._Z7LEDInitv)
+    [Anonymous Symbol]                       0x0800246a   Section        0  lcdsystem.o(.text._Z9LCDSetPos9e_lcdlineh)
+    [Anonymous Symbol]                       0x080024b6   Section        0  utilities.o(.text._Z9LEDTogglev)
+    [Anonymous Symbol]                       0x080024d0   Section        0  rs232.o(.text._Z9RS232Initv)
+    __arm_cp.0_0                             0x0800254c   Number         4  rs232.o(.text._Z9RS232Initv)
+    __arm_cp.0_1                             0x08002550   Number         4  rs232.o(.text._Z9RS232Initv)
+    __arm_cp.0_3                             0x08002554   Number         4  rs232.o(.text._Z9RS232Initv)
+    __arm_cp.0_4                             0x08002558   Number         4  rs232.o(.text._Z9RS232Initv)
+    [Anonymous Symbol]                       0x0800255c   Section        0  rs232.o(.text._Z9RS232Sendc)
+    __arm_cp.1_0                             0x0800257c   Number         4  rs232.o(.text._Z9RS232Sendc)
+    [Anonymous Symbol]                       0x08002580   Section        0  stringclass.o(.text._Z9fast_atoiPci)
+    [Anonymous Symbol]                       0x080025c0   Section        0  lcdsystem.o(.text._ZL16LCD_Send_HNibblet)
+    _ZL16LCD_Send_HNibblet                   0x080025c1   Thumb Code    56  lcdsystem.o(.text._ZL16LCD_Send_HNibblet)
+    [Anonymous Symbol]                       0x080025f4   Section        0  main.o(.text._ZL18__NVIC_SystemResetv)
+    _ZL18__NVIC_SystemResetv                 0x080025f5   Thumb Code    36  main.o(.text._ZL18__NVIC_SystemResetv)
+    __arm_cp.4_0                             0x08002610   Number         4  main.o(.text._ZL18__NVIC_SystemResetv)
+    __arm_cp.4_1                             0x08002614   Number         4  main.o(.text._ZL18__NVIC_SystemResetv)
+    [Anonymous Symbol]                       0x08002618   Section        0  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
+    _ZL8LCD_Sendt13LCD_SEND_TYPE             0x08002619   Thumb Code   252  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
+    __arm_cp.2_0                             0x08002708   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
+    __arm_cp.2_1                             0x0800270c   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
+    __arm_cp.2_2                             0x08002710   Number         4  lcdsystem.o(.text._ZL8LCD_Sendt13LCD_SEND_TYPE)
+    [Anonymous Symbol]                       0x08002714   Section        0  stringclass.o(.text._ZN7TString14GetIntFromWordEj)
+    [Anonymous Symbol]                       0x0800278a   Section        0  stringclass.o(.text._ZN7TString15DoesWordEqualToEjPKc)
+    [Anonymous Symbol]                       0x08002820   Section        0  stringclass.o(.text._ZN7TString15DoesWordEqualToEjS_)
+    [Anonymous Symbol]                       0x080028ce   Section        0  stringclass.o(.text._ZN7TString16RemoveFirstWordsEj)
+    [Anonymous Symbol]                       0x08002936   Section        0  stringclass.o(.text._ZN7TString5ClearEv)
+    [Anonymous Symbol]                       0x08002950   Section        0  stringclass.o(.text._ZN7TString9GetLengthEv)
+    [Anonymous Symbol]                       0x08002954   Section        0  stringclass.o(.text._ZN7TStringC2EPKc)
+    [Anonymous Symbol]                       0x08002986   Section        0  stringclass.o(.text._ZN7TStringC2Ev)
+    [Anonymous Symbol]                       0x080029a0   Section        0  stringclass.o(.text._ZN7TStringaSEPKc)
+    [Anonymous Symbol]                       0x080029d0   Section        0  stringclass.o(.text._ZN7TStringaSERKS_)
+    [Anonymous Symbol]                       0x08002a06   Section        0  stringclass.o(.text._ZN7TStringixEj)
+    [Anonymous Symbol]                       0x08002a1a   Section        0  stringclass.o(.text._ZN7TStringpLERKS_)
+    [Anonymous Symbol]                       0x08002a4e   Section        0  stringclass.o(.text._ZN7TStringpLERKc)
+    [Anonymous Symbol]                       0x08002a64   Section        0  stringclass.o(.text._ZN7TStringpLERKj)
+    __arm_cp.20_0                            0x08002a98   Number         4  stringclass.o(.text._ZN7TStringpLERKj)
+    [Anonymous Symbol]                       0x08002a9c   Section        0  stringclass.o(.text._ZNK7TStringeqEPKc)
+    [Anonymous Symbol]                       0x08002ac8   Section        0  stringclass.o(.text._ZNK7TStringeqERS_)
+    [Anonymous Symbol]                       0x08002af8   Section        0  main.o(.text.main)
+    __arm_cp.16_0                            0x08002cec   Number         4  main.o(.text.main)
+    __arm_cp.16_1                            0x08002cf0   Number         4  main.o(.text.main)
+    __arm_cp.16_3                            0x08002d04   Number         4  main.o(.text.main)
+    __arm_cp.16_4                            0x08002d08   Number         4  main.o(.text.main)
+    __arm_cp.16_6                            0x08002d14   Number         4  main.o(.text.main)
+    __arm_cp.16_7                            0x08002d18   Number         4  main.o(.text.main)
+    __arm_cp.16_8                            0x08002d1c   Number         4  main.o(.text.main)
+    __arm_cp.16_9                            0x08002d20   Number         4  main.o(.text.main)
+    __arm_cp.16_11                           0x08002d28   Number         4  main.o(.text.main)
+    __arm_cp.16_13                           0x08002d34   Number         4  main.o(.text.main)
+    __arm_cp.16_15                           0x08002d40   Number         4  main.o(.text.main)
+    __arm_cp.16_17                           0x08002d4c   Number         4  main.o(.text.main)
+    __arm_cp.16_19                           0x08002d54   Number         4  main.o(.text.main)
+    __arm_cp.16_21                           0x08002d60   Number         4  main.o(.text.main)
+    __arm_cp.16_24                           0x08002d74   Number         4  main.o(.text.main)
+    __arm_cp.16_27                           0x08002d94   Number         4  main.o(.text.main)
+    i._is_digit                              0x08002d98   Section        0  __printf_wp.o(i._is_digit)
+    x$fpl$dadd                               0x08002da8   Section      336  daddsub_clz.o(x$fpl$dadd)
+    $v0                                      0x08002da8   Number         0  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x08002db9   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dfix                               0x08002ef8   Section       94  dfix.o(x$fpl$dfix)
+    $v0                                      0x08002ef8   Number         0  dfix.o(x$fpl$dfix)
+    x$fpl$dfltu                              0x08002f56   Section       38  dflt_clz.o(x$fpl$dfltu)
+    $v0                                      0x08002f56   Number         0  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dmul                               0x08002f7c   Section      340  dmul.o(x$fpl$dmul)
+    $v0                                      0x08002f7c   Number         0  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x080030d0   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x080030d0   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x0800316c   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x0800316c   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$dsub                               0x08003178   Section      468  daddsub_clz.o(x$fpl$dsub)
+    $v0                                      0x08003178   Number         0  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x08003189   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$fpinit                             0x0800334c   Section       26  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x0800334c   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x08003366   Section       17  __printf_flags_ss_wp.o(.constdata)
+    x$fpl$usenofp                            0x08003366   Section        0  usenofp.o(x$fpl$usenofp)
+    maptable                                 0x08003366   Data          17  __printf_flags_ss_wp.o(.constdata)
+    [Anonymous Symbol]                       0x08003377   Section        0  main.o(.rodata.str1.1)
+    .L.str.3                                 0x08003377   Data          29  main.o(.rodata.str1.1)
+    .L.str.5                                 0x08003394   Data          30  main.o(.rodata.str1.1)
+    .L.str.1                                 0x080033b2   Data          31  main.o(.rodata.str1.1)
+    .L.str.7                                 0x080033d1   Data          32  main.o(.rodata.str1.1)
+    .L.str.10                                0x080033f1   Data           8  main.o(.rodata.str1.1)
+    .L.str.2                                 0x080033f9   Data           4  main.o(.rodata.str1.1)
+    .L.str.8                                 0x080033fd   Data           6  main.o(.rodata.str1.1)
+    .L.str.4                                 0x08003403   Data           5  main.o(.rodata.str1.1)
+    .L.str.14                                0x08003408   Data           4  main.o(.rodata.str1.1)
+    .L.str.12                                0x0800340c   Data           5  main.o(.rodata.str1.1)
+    .L.str                                   0x08003411   Data           6  main.o(.rodata.str1.1)
+    .L.str.6                                 0x08003417   Data           7  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800341e   Section        0  stringclass.o(.rodata.str1.1)
+    .L.str                                   0x0800341e   Data           3  stringclass.o(.rodata.str1.1)
+    .init_array                              0x08003450   Section        0  init_aeabi.o(.init_array)
     [Anonymous Symbol]                       0x20000000   Section        0  stm32f30x_rcc.o(.data..L_MergedGlobals)
     _ZL16APBAHBPrescTable                    0x20000000   Data          16  stm32f30x_rcc.o(.data..L_MergedGlobals)
     _ZL13ADCPrescTable                       0x20000010   Data          32  stm32f30x_rcc.o(.data..L_MergedGlobals)
@@ -4604,69 +4608,70 @@ Image Symbol Table
     GetClockFreq()                           0x08001c3d   Thumb Code    30  utilities.o(.text._Z12GetClockFreqv)
     LCDClearLine(e_lcdline)                  0x08001c5d   Thumb Code   144  lcdsystem.o(.text._Z12LCDClearLine9e_lcdline)
     MotorCommand(TString)                    0x08001ced   Thumb Code    88  main.o(.text._Z12MotorCommand7TString)
-    ReportOnline(TString)                    0x08001d45   Thumb Code    40  main.o(.text._Z12ReportOnline7TString)
-    ResetCommand(TString)                    0x08001d6d   Thumb Code    92  main.o(.text._Z12ResetCommand7TString)
-    LCDSendString(TString)                   0x08001dc9   Thumb Code    52  lcdsystem.o(.text._Z13LCDSendString7TString)
-    SetLEDColorEx(TString)                   0x08001dfd   Thumb Code   396  main.o(.text._Z13SetLEDColorEx7TString)
-    PingPongCommand(TString)                 0x08001f89   Thumb Code    36  main.o(.text._Z15PingPongCommand7TString)
-    RS232SendString(TString)                 0x08001fad   Thumb Code    76  rs232.o(.text._Z15RS232SendString7TString)
-    RS232SendString(const char*)             0x08001ff5   Thumb Code    56  rs232.o(.text._Z15RS232SendStringPKc)
-    AddTimerCallback(const char*, void(*)()) 0x0800202d   Thumb Code    52  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
-    AddCommandHandler(void(*)(TString), const char*) 0x08002059   Thumb Code    48  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
-    AddCommandToQueue(TString)               0x08002081   Thumb Code    64  commandsystem.o(.text._Z17AddCommandToQueue7TString)
-    InitCommandSystem()                      0x080020bd   Thumb Code    40  commandsystem.o(.text._Z17InitCommandSystemv)
-    InitTimerCallback()                      0x080020dd   Thumb Code    40  timercallback.o(.text._Z17InitTimerCallbackv)
-    Timer2CH1Callback()                      0x080020fd   Thumb Code     4  main.o(.text._Z17Timer2CH1Callbackv)
-    ExecuteTimerCallback(const char*)        0x08002101   Thumb Code    48  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
-    ExecuteAllQueueCommands()                0x08002131   Thumb Code   276  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
-    Delay(unsigned)                          0x08002245   Thumb Code    44  utilities.o(.text._Z5Delayj)
-    DCMotor(_motor_sel, unsigned char, _motor_dir) 0x08002271   Thumb Code   144  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
-    LCDInit()                                0x08002301   Thumb Code   320  lcdsystem.o(.text._Z7LCDInitv)
-    LEDInit()                                0x08002435   Thumb Code    34  utilities.o(.text._Z7LEDInitv)
-    LEDToggle()                              0x08002457   Thumb Code    26  utilities.o(.text._Z9LEDTogglev)
-    RS232Init()                              0x08002471   Thumb Code   144  rs232.o(.text._Z9RS232Initv)
-    RS232Send(char)                          0x080024fd   Thumb Code    36  rs232.o(.text._Z9RS232Sendc)
-    fast_atoi(char*, int)                    0x08002521   Thumb Code    64  stringclass.o(.text._Z9fast_atoiPci)
-    TString::GetIntFromWord(unsigned)        0x080026b5   Thumb Code   118  stringclass.o(.text._ZN7TString14GetIntFromWordEj)
-    TString::DoesWordEqualTo(unsigned, const char*) 0x0800272b   Thumb Code   150  stringclass.o(.text._ZN7TString15DoesWordEqualToEjPKc)
-    TString::DoesWordEqualTo(unsigned, TString) 0x080027c1   Thumb Code   174  stringclass.o(.text._ZN7TString15DoesWordEqualToEjS_)
-    TString::RemoveFirstWords(unsigned)      0x0800286f   Thumb Code   104  stringclass.o(.text._ZN7TString16RemoveFirstWordsEj)
-    TString::Clear()                         0x080028d7   Thumb Code    26  stringclass.o(.text._ZN7TString5ClearEv)
-    TString::GetLength()                     0x080028f1   Thumb Code     4  stringclass.o(.text._ZN7TString9GetLengthEv)
-    TString::TString(const char*)            0x080028f5   Thumb Code    50  stringclass.o(.text._ZN7TStringC2EPKc)
-    TString::TString__sub_object(const char*) 0x080028f5   Thumb Code    50  stringclass.o(.text._ZN7TStringC2EPKc)
-    TString::TString()                       0x08002927   Thumb Code    26  stringclass.o(.text._ZN7TStringC2Ev)
-    TString::TString__sub_object()           0x08002927   Thumb Code    26  stringclass.o(.text._ZN7TStringC2Ev)
-    TString::operator =(const char*)         0x08002941   Thumb Code    48  stringclass.o(.text._ZN7TStringaSEPKc)
-    TString::operator =(const TString&)      0x08002971   Thumb Code    54  stringclass.o(.text._ZN7TStringaSERKS_)
-    TString::operator [](unsigned)           0x080029a7   Thumb Code    20  stringclass.o(.text._ZN7TStringixEj)
-    TString::operator +=(const TString&)     0x080029bb   Thumb Code    52  stringclass.o(.text._ZN7TStringpLERKS_)
-    TString::operator +=(const char&)        0x080029ef   Thumb Code    22  stringclass.o(.text._ZN7TStringpLERKc)
-    TString::operator +=(const unsigned&)    0x08002a05   Thumb Code    56  stringclass.o(.text._ZN7TStringpLERKj)
-    TString::operator ==(const char*) const  0x08002a3d   Thumb Code    44  stringclass.o(.text._ZNK7TStringeqEPKc)
-    TString::operator ==(TString&) const     0x08002a69   Thumb Code    46  stringclass.o(.text._ZNK7TStringeqERS_)
-    main                                     0x08002a99   Thumb Code   496  main.o(.text.main)
-    _is_digit                                0x08002c89   Thumb Code    14  __printf_wp.o(i._is_digit)
-    __aeabi_dadd                             0x08002c99   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x08002c99   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __aeabi_d2iz                             0x08002de9   Thumb Code     0  dfix.o(x$fpl$dfix)
-    _dfix                                    0x08002de9   Thumb Code    94  dfix.o(x$fpl$dfix)
-    __aeabi_ui2d                             0x08002e47   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x08002e47   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_dmul                             0x08002e6d   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x08002e6d   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x08002fc1   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x0800305d   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_dsub                             0x08003069   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x08003069   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
-    _fp_init                                 0x0800323d   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x08003255   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x08003255   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __I$use$fp                               0x08003256   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08003314   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003334   Number         0  anon$$obj.o(Region$$Table)
-    SHT$$INIT_ARRAY$$Base                    0x08003334   Number         0  rs232.o(.init_array)
-    SHT$$INIT_ARRAY$$Limit                   0x08003340   Number         0  init_aeabi.o(.init_array)
+    ReportOnline(TString)                    0x08001d41   Thumb Code    56  main.o(.text._Z12ReportOnline7TString)
+    ResetCommand(TString)                    0x08001d79   Thumb Code    92  main.o(.text._Z12ResetCommand7TString)
+    LCDSendString(TString)                   0x08001dd5   Thumb Code    52  lcdsystem.o(.text._Z13LCDSendString7TString)
+    SetLEDColorEx(TString)                   0x08001e09   Thumb Code   396  main.o(.text._Z13SetLEDColorEx7TString)
+    PingPongCommand(TString)                 0x08001f95   Thumb Code    36  main.o(.text._Z15PingPongCommand7TString)
+    RS232SendString(TString)                 0x08001fb9   Thumb Code    76  rs232.o(.text._Z15RS232SendString7TString)
+    RS232SendString(const char*)             0x08002001   Thumb Code    56  rs232.o(.text._Z15RS232SendStringPKc)
+    AddTimerCallback(const char*, void(*)()) 0x08002039   Thumb Code    52  timercallback.o(.text._Z16AddTimerCallbackPKcPFvvE)
+    AddCommandHandler(void(*)(TString), const char*) 0x08002065   Thumb Code    48  commandsystem.o(.text._Z17AddCommandHandlerPFv7TStringEPKc)
+    AddCommandToQueue(TString)               0x0800208d   Thumb Code    64  commandsystem.o(.text._Z17AddCommandToQueue7TString)
+    InitCommandSystem()                      0x080020c9   Thumb Code    40  commandsystem.o(.text._Z17InitCommandSystemv)
+    InitTimerCallback()                      0x080020e9   Thumb Code    40  timercallback.o(.text._Z17InitTimerCallbackv)
+    Timer2CH1Callback()                      0x08002109   Thumb Code     4  main.o(.text._Z17Timer2CH1Callbackv)
+    ExecuteTimerCallback(const char*)        0x0800210d   Thumb Code    48  timercallback.o(.text._Z20ExecuteTimerCallbackPKc)
+    ExecuteAllQueueCommands()                0x0800213d   Thumb Code   276  commandsystem.o(.text._Z23ExecuteAllQueueCommandsv)
+    Delay(unsigned)                          0x08002251   Thumb Code    44  utilities.o(.text._Z5Delayj)
+    DCMotor(_motor_sel, unsigned char, _motor_dir) 0x08002281   Thumb Code   144  dcmotorsystem.o(.text._Z7DCMotor10_motor_selh10_motor_dir)
+    LCDInit()                                0x08002311   Thumb Code   320  lcdsystem.o(.text._Z7LCDInitv)
+    LEDInit()                                0x08002449   Thumb Code    34  utilities.o(.text._Z7LEDInitv)
+    LCDSetPos(e_lcdline, unsigned char)      0x0800246b   Thumb Code    76  lcdsystem.o(.text._Z9LCDSetPos9e_lcdlineh)
+    LEDToggle()                              0x080024b7   Thumb Code    26  utilities.o(.text._Z9LEDTogglev)
+    RS232Init()                              0x080024d1   Thumb Code   144  rs232.o(.text._Z9RS232Initv)
+    RS232Send(char)                          0x0800255d   Thumb Code    36  rs232.o(.text._Z9RS232Sendc)
+    fast_atoi(char*, int)                    0x08002581   Thumb Code    64  stringclass.o(.text._Z9fast_atoiPci)
+    TString::GetIntFromWord(unsigned)        0x08002715   Thumb Code   118  stringclass.o(.text._ZN7TString14GetIntFromWordEj)
+    TString::DoesWordEqualTo(unsigned, const char*) 0x0800278b   Thumb Code   150  stringclass.o(.text._ZN7TString15DoesWordEqualToEjPKc)
+    TString::DoesWordEqualTo(unsigned, TString) 0x08002821   Thumb Code   174  stringclass.o(.text._ZN7TString15DoesWordEqualToEjS_)
+    TString::RemoveFirstWords(unsigned)      0x080028cf   Thumb Code   104  stringclass.o(.text._ZN7TString16RemoveFirstWordsEj)
+    TString::Clear()                         0x08002937   Thumb Code    26  stringclass.o(.text._ZN7TString5ClearEv)
+    TString::GetLength()                     0x08002951   Thumb Code     4  stringclass.o(.text._ZN7TString9GetLengthEv)
+    TString::TString(const char*)            0x08002955   Thumb Code    50  stringclass.o(.text._ZN7TStringC2EPKc)
+    TString::TString__sub_object(const char*) 0x08002955   Thumb Code    50  stringclass.o(.text._ZN7TStringC2EPKc)
+    TString::TString()                       0x08002987   Thumb Code    26  stringclass.o(.text._ZN7TStringC2Ev)
+    TString::TString__sub_object()           0x08002987   Thumb Code    26  stringclass.o(.text._ZN7TStringC2Ev)
+    TString::operator =(const char*)         0x080029a1   Thumb Code    48  stringclass.o(.text._ZN7TStringaSEPKc)
+    TString::operator =(const TString&)      0x080029d1   Thumb Code    54  stringclass.o(.text._ZN7TStringaSERKS_)
+    TString::operator [](unsigned)           0x08002a07   Thumb Code    20  stringclass.o(.text._ZN7TStringixEj)
+    TString::operator +=(const TString&)     0x08002a1b   Thumb Code    52  stringclass.o(.text._ZN7TStringpLERKS_)
+    TString::operator +=(const char&)        0x08002a4f   Thumb Code    22  stringclass.o(.text._ZN7TStringpLERKc)
+    TString::operator +=(const unsigned&)    0x08002a65   Thumb Code    56  stringclass.o(.text._ZN7TStringpLERKj)
+    TString::operator ==(const char*) const  0x08002a9d   Thumb Code    44  stringclass.o(.text._ZNK7TStringeqEPKc)
+    TString::operator ==(TString&) const     0x08002ac9   Thumb Code    46  stringclass.o(.text._ZNK7TStringeqERS_)
+    main                                     0x08002af9   Thumb Code   672  main.o(.text.main)
+    _is_digit                                0x08002d99   Thumb Code    14  __printf_wp.o(i._is_digit)
+    __aeabi_dadd                             0x08002da9   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x08002da9   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __aeabi_d2iz                             0x08002ef9   Thumb Code     0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x08002ef9   Thumb Code    94  dfix.o(x$fpl$dfix)
+    __aeabi_ui2d                             0x08002f57   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x08002f57   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_dmul                             0x08002f7d   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x08002f7d   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x080030d1   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x0800316d   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_dsub                             0x08003179   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x08003179   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    _fp_init                                 0x0800334d   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08003365   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08003365   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __I$use$fp                               0x08003366   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08003424   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003444   Number         0  anon$$obj.o(Region$$Table)
+    SHT$$INIT_ARRAY$$Base                    0x08003444   Number         0  rs232.o(.init_array)
+    SHT$$INIT_ARRAY$$Limit                   0x08003450   Number         0  init_aeabi.o(.init_array)
     SystemCoreClock                          0x20000030   Data           4  system_stm32f30x.o(.data..L_MergedGlobals)
     AHBPrescTable                            0x20000034   Data          16  system_stm32f30x.o(.data..L_MergedGlobals)
     PWM_Freq                                 0x20000044   Data           4  utilities.o(.data..L_MergedGlobals)
@@ -4677,8 +4682,9 @@ Image Symbol Table
     __temporary_stack_top$libspace           0x200000b0   Data           0  libspace.o(.bss)
     TimeDelayMS                              0x200000b4   Data           4  systick.o(.bss..L_MergedGlobals)
     TimeDelayUS                              0x200000b8   Data           4  systick.o(.bss..L_MergedGlobals)
-    Dir1                                     0x20000100   Data           1  main.o(.bss..L_MergedGlobals)
-    Dir2                                     0x20000101   Data           1  main.o(.bss..L_MergedGlobals)
+    LinkedConnection                         0x20000100   Data           1  main.o(.bss..L_MergedGlobals)
+    Dir1                                     0x20000101   Data           1  main.o(.bss..L_MergedGlobals)
+    Dir2                                     0x20000102   Data           1  main.o(.bss..L_MergedGlobals)
     SpeedM1                                  0x20000104   Data           4  main.o(.bss..L_MergedGlobals)
     SpeedM2                                  0x20000108   Data           4  main.o(.bss..L_MergedGlobals)
     CommandTable                             0x20000150   Data         512  commandsystem.o(.bss.CommandTable)
@@ -4700,9 +4706,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000195
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003390, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000034a0, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003340, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003450, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -4856,87 +4862,89 @@ Memory Map of the image
     0x08001c3c   0x08001c3c   0x0000001e   Code   RO         1695    .text._Z12GetClockFreqv  utilities.o
     0x08001c5a   0x08001c5a   0x00000002   PAD
     0x08001c5c   0x08001c5c   0x00000090   Code   RO         1992    .text._Z12LCDClearLine9e_lcdline  lcdsystem.o
-    0x08001cec   0x08001cec   0x00000058   Code   RO         1833    .text._Z12MotorCommand7TString  main.o
-    0x08001d44   0x08001d44   0x00000028   Code   RO         1814    .text._Z12ReportOnline7TString  main.o
-    0x08001d6c   0x08001d6c   0x0000005c   Code   RO         1807    .text._Z12ResetCommand7TString  main.o
-    0x08001dc8   0x08001dc8   0x00000034   Code   RO         1988    .text._Z13LCDSendString7TString  lcdsystem.o
-    0x08001dfc   0x08001dfc   0x0000018c   Code   RO         1800    .text._Z13SetLEDColorEx7TString  main.o
-    0x08001f88   0x08001f88   0x00000024   Code   RO         1812    .text._Z15PingPongCommand7TString  main.o
-    0x08001fac   0x08001fac   0x00000048   Code   RO         1755    .text._Z15RS232SendString7TString  rs232.o
-    0x08001ff4   0x08001ff4   0x00000038   Code   RO         1753    .text._Z15RS232SendStringPKc  rs232.o
-    0x0800202c   0x0800202c   0x0000002c   Code   RO         1943    .text._Z16AddTimerCallbackPKcPFvvE  timercallback.o
-    0x08002058   0x08002058   0x00000028   Code   RO         1855    .text._Z17AddCommandHandlerPFv7TStringEPKc  commandsystem.o
-    0x08002080   0x08002080   0x0000003c   Code   RO         1859    .text._Z17AddCommandToQueue7TString  commandsystem.o
-    0x080020bc   0x080020bc   0x00000020   Code   RO         1853    .text._Z17InitCommandSystemv  commandsystem.o
-    0x080020dc   0x080020dc   0x00000020   Code   RO         1941    .text._Z17InitTimerCallbackv  timercallback.o
-    0x080020fc   0x080020fc   0x00000004   Code   RO         1805    .text._Z17Timer2CH1Callbackv  main.o
-    0x08002100   0x08002100   0x00000030   Code   RO         1945    .text._Z20ExecuteTimerCallbackPKc  timercallback.o
-    0x08002130   0x08002130   0x00000114   Code   RO         1857    .text._Z23ExecuteAllQueueCommandsv  commandsystem.o
-    0x08002244   0x08002244   0x0000002c   Code   RO         1679    .text._Z5Delayj     utilities.o
-    0x08002270   0x08002270   0x00000090   Code   RO         1735    .text._Z7DCMotor10_motor_selh10_motor_dir  dcmotorsystem.o
-    0x08002300   0x08002300   0x00000134   Code   RO         1978    .text._Z7LCDInitv   lcdsystem.o
-    0x08002434   0x08002434   0x00000022   Code   RO         1683    .text._Z7LEDInitv   utilities.o
-    0x08002456   0x08002456   0x0000001a   Code   RO         1687    .text._Z9LEDTogglev  utilities.o
-    0x08002470   0x08002470   0x0000008c   Code   RO         1749    .text._Z9RS232Initv  rs232.o
-    0x080024fc   0x080024fc   0x00000024   Code   RO         1751    .text._Z9RS232Sendc  rs232.o
-    0x08002520   0x08002520   0x00000040   Code   RO         1891    .text._Z9fast_atoiPci  stringclass.o
-    0x08002560   0x08002560   0x00000034   Code   RO         1980    .text._ZL16LCD_Send_HNibblet  lcdsystem.o
-    0x08002594   0x08002594   0x00000024   Code   RO         1810    .text._ZL18__NVIC_SystemResetv  main.o
-    0x080025b8   0x080025b8   0x000000fc   Code   RO         1982    .text._ZL8LCD_Sendt13LCD_SEND_TYPE  lcdsystem.o
-    0x080026b4   0x080026b4   0x00000076   Code   RO         1893    .text._ZN7TString14GetIntFromWordEj  stringclass.o
-    0x0800272a   0x0800272a   0x00000096   Code   RO         1897    .text._ZN7TString15DoesWordEqualToEjPKc  stringclass.o
-    0x080027c0   0x080027c0   0x000000ae   Code   RO         1901    .text._ZN7TString15DoesWordEqualToEjS_  stringclass.o
-    0x0800286e   0x0800286e   0x00000068   Code   RO         1899    .text._ZN7TString16RemoveFirstWordsEj  stringclass.o
-    0x080028d6   0x080028d6   0x0000001a   Code   RO         1907    .text._ZN7TString5ClearEv  stringclass.o
-    0x080028f0   0x080028f0   0x00000004   Code   RO         1903    .text._ZN7TString9GetLengthEv  stringclass.o
-    0x080028f4   0x080028f4   0x00000032   Code   RO         1881    .text._ZN7TStringC2EPKc  stringclass.o
-    0x08002926   0x08002926   0x0000001a   Code   RO         1885    .text._ZN7TStringC2Ev  stringclass.o
-    0x08002940   0x08002940   0x00000030   Code   RO         1913    .text._ZN7TStringaSEPKc  stringclass.o
-    0x08002970   0x08002970   0x00000036   Code   RO         1911    .text._ZN7TStringaSERKS_  stringclass.o
-    0x080029a6   0x080029a6   0x00000014   Code   RO         1905    .text._ZN7TStringixEj  stringclass.o
-    0x080029ba   0x080029ba   0x00000034   Code   RO         1921    .text._ZN7TStringpLERKS_  stringclass.o
-    0x080029ee   0x080029ee   0x00000016   Code   RO         1915    .text._ZN7TStringpLERKc  stringclass.o
-    0x08002a04   0x08002a04   0x00000038   Code   RO         1919    .text._ZN7TStringpLERKj  stringclass.o
-    0x08002a3c   0x08002a3c   0x0000002c   Code   RO         1925    .text._ZNK7TStringeqEPKc  stringclass.o
-    0x08002a68   0x08002a68   0x0000002e   Code   RO         1923    .text._ZNK7TStringeqERS_  stringclass.o
-    0x08002a96   0x08002a96   0x00000002   PAD
-    0x08002a98   0x08002a98   0x000001f0   Code   RO         1835    .text.main          main.o
-    0x08002c88   0x08002c88   0x0000000e   Code   RO         2110    i._is_digit         c_w.l(__printf_wp.o)
-    0x08002c96   0x08002c96   0x00000002   PAD
-    0x08002c98   0x08002c98   0x00000150   Code   RO         2138    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
-    0x08002de8   0x08002de8   0x0000005e   Code   RO         2148    x$fpl$dfix          fz_wm.l(dfix.o)
-    0x08002e46   0x08002e46   0x00000026   Code   RO         2156    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
-    0x08002e6c   0x08002e6c   0x00000154   Code   RO         2162    x$fpl$dmul          fz_wm.l(dmul.o)
-    0x08002fc0   0x08002fc0   0x0000009c   Code   RO         2357    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x0800305c   0x0800305c   0x0000000c   Code   RO         2359    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x08003068   0x08003068   0x000001d4   Code   RO         2140    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
-    0x0800323c   0x0800323c   0x0000001a   Code   RO         2518    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08003256   0x08003256   0x00000000   Code   RO         2369    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x08003256   0x08003256   0x00000011   Data   RO         2118    .constdata          c_w.l(__printf_flags_ss_wp.o)
-    0x08003267   0x08003267   0x000000a7   Data   RO         1837    .rodata.str1.1      main.o
-    0x0800330e   0x0800330e   0x00000003   Data   RO         1929    .rodata.str1.1      stringclass.o
-    0x08003311   0x08003311   0x00000003   PAD
-    0x08003314   0x08003314   0x00000020   Data   RO         2646    Region$$Table       anon$$obj.o
-    0x08003334   0x08003334   0x00000004   Data   RO         1768    .init_array         rs232.o
-    0x08003338   0x08003334   0x00000004   Data   RO         1867    .init_array         commandsystem.o
-    0x0800333c   0x08003334   0x00000004   Data   RO         1966    .init_array         timercallback.o
-    0x08003340   0x08003334   0x00000000   Data   RO         2133    .init_array         c_w.l(init_aeabi.o)
+    0x08001cec   0x08001cec   0x00000054   Code   RO         1833    .text._Z12MotorCommand7TString  main.o
+    0x08001d40   0x08001d40   0x00000038   Code   RO         1814    .text._Z12ReportOnline7TString  main.o
+    0x08001d78   0x08001d78   0x0000005c   Code   RO         1807    .text._Z12ResetCommand7TString  main.o
+    0x08001dd4   0x08001dd4   0x00000034   Code   RO         1988    .text._Z13LCDSendString7TString  lcdsystem.o
+    0x08001e08   0x08001e08   0x0000018c   Code   RO         1800    .text._Z13SetLEDColorEx7TString  main.o
+    0x08001f94   0x08001f94   0x00000024   Code   RO         1812    .text._Z15PingPongCommand7TString  main.o
+    0x08001fb8   0x08001fb8   0x00000048   Code   RO         1755    .text._Z15RS232SendString7TString  rs232.o
+    0x08002000   0x08002000   0x00000038   Code   RO         1753    .text._Z15RS232SendStringPKc  rs232.o
+    0x08002038   0x08002038   0x0000002c   Code   RO         1943    .text._Z16AddTimerCallbackPKcPFvvE  timercallback.o
+    0x08002064   0x08002064   0x00000028   Code   RO         1855    .text._Z17AddCommandHandlerPFv7TStringEPKc  commandsystem.o
+    0x0800208c   0x0800208c   0x0000003c   Code   RO         1859    .text._Z17AddCommandToQueue7TString  commandsystem.o
+    0x080020c8   0x080020c8   0x00000020   Code   RO         1853    .text._Z17InitCommandSystemv  commandsystem.o
+    0x080020e8   0x080020e8   0x00000020   Code   RO         1941    .text._Z17InitTimerCallbackv  timercallback.o
+    0x08002108   0x08002108   0x00000004   Code   RO         1805    .text._Z17Timer2CH1Callbackv  main.o
+    0x0800210c   0x0800210c   0x00000030   Code   RO         1945    .text._Z20ExecuteTimerCallbackPKc  timercallback.o
+    0x0800213c   0x0800213c   0x00000114   Code   RO         1857    .text._Z23ExecuteAllQueueCommandsv  commandsystem.o
+    0x08002250   0x08002250   0x0000002c   Code   RO         1679    .text._Z5Delayj     utilities.o
+    0x0800227c   0x0800227c   0x00000004   PAD
+    0x08002280   0x08002280   0x00000090   Code   RO         1735    .text._Z7DCMotor10_motor_selh10_motor_dir  dcmotorsystem.o
+    0x08002310   0x08002310   0x00000138   Code   RO         1978    .text._Z7LCDInitv   lcdsystem.o
+    0x08002448   0x08002448   0x00000022   Code   RO         1683    .text._Z7LEDInitv   utilities.o
+    0x0800246a   0x0800246a   0x0000004c   Code   RO         1990    .text._Z9LCDSetPos9e_lcdlineh  lcdsystem.o
+    0x080024b6   0x080024b6   0x0000001a   Code   RO         1687    .text._Z9LEDTogglev  utilities.o
+    0x080024d0   0x080024d0   0x0000008c   Code   RO         1749    .text._Z9RS232Initv  rs232.o
+    0x0800255c   0x0800255c   0x00000024   Code   RO         1751    .text._Z9RS232Sendc  rs232.o
+    0x08002580   0x08002580   0x00000040   Code   RO         1891    .text._Z9fast_atoiPci  stringclass.o
+    0x080025c0   0x080025c0   0x00000034   Code   RO         1980    .text._ZL16LCD_Send_HNibblet  lcdsystem.o
+    0x080025f4   0x080025f4   0x00000024   Code   RO         1810    .text._ZL18__NVIC_SystemResetv  main.o
+    0x08002618   0x08002618   0x000000fc   Code   RO         1982    .text._ZL8LCD_Sendt13LCD_SEND_TYPE  lcdsystem.o
+    0x08002714   0x08002714   0x00000076   Code   RO         1893    .text._ZN7TString14GetIntFromWordEj  stringclass.o
+    0x0800278a   0x0800278a   0x00000096   Code   RO         1897    .text._ZN7TString15DoesWordEqualToEjPKc  stringclass.o
+    0x08002820   0x08002820   0x000000ae   Code   RO         1901    .text._ZN7TString15DoesWordEqualToEjS_  stringclass.o
+    0x080028ce   0x080028ce   0x00000068   Code   RO         1899    .text._ZN7TString16RemoveFirstWordsEj  stringclass.o
+    0x08002936   0x08002936   0x0000001a   Code   RO         1907    .text._ZN7TString5ClearEv  stringclass.o
+    0x08002950   0x08002950   0x00000004   Code   RO         1903    .text._ZN7TString9GetLengthEv  stringclass.o
+    0x08002954   0x08002954   0x00000032   Code   RO         1881    .text._ZN7TStringC2EPKc  stringclass.o
+    0x08002986   0x08002986   0x0000001a   Code   RO         1885    .text._ZN7TStringC2Ev  stringclass.o
+    0x080029a0   0x080029a0   0x00000030   Code   RO         1913    .text._ZN7TStringaSEPKc  stringclass.o
+    0x080029d0   0x080029d0   0x00000036   Code   RO         1911    .text._ZN7TStringaSERKS_  stringclass.o
+    0x08002a06   0x08002a06   0x00000014   Code   RO         1905    .text._ZN7TStringixEj  stringclass.o
+    0x08002a1a   0x08002a1a   0x00000034   Code   RO         1921    .text._ZN7TStringpLERKS_  stringclass.o
+    0x08002a4e   0x08002a4e   0x00000016   Code   RO         1915    .text._ZN7TStringpLERKc  stringclass.o
+    0x08002a64   0x08002a64   0x00000038   Code   RO         1919    .text._ZN7TStringpLERKj  stringclass.o
+    0x08002a9c   0x08002a9c   0x0000002c   Code   RO         1925    .text._ZNK7TStringeqEPKc  stringclass.o
+    0x08002ac8   0x08002ac8   0x0000002e   Code   RO         1923    .text._ZNK7TStringeqERS_  stringclass.o
+    0x08002af6   0x08002af6   0x00000002   PAD
+    0x08002af8   0x08002af8   0x000002a0   Code   RO         1835    .text.main          main.o
+    0x08002d98   0x08002d98   0x0000000e   Code   RO         2110    i._is_digit         c_w.l(__printf_wp.o)
+    0x08002da6   0x08002da6   0x00000002   PAD
+    0x08002da8   0x08002da8   0x00000150   Code   RO         2138    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
+    0x08002ef8   0x08002ef8   0x0000005e   Code   RO         2148    x$fpl$dfix          fz_wm.l(dfix.o)
+    0x08002f56   0x08002f56   0x00000026   Code   RO         2156    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
+    0x08002f7c   0x08002f7c   0x00000154   Code   RO         2162    x$fpl$dmul          fz_wm.l(dmul.o)
+    0x080030d0   0x080030d0   0x0000009c   Code   RO         2357    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x0800316c   0x0800316c   0x0000000c   Code   RO         2359    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x08003178   0x08003178   0x000001d4   Code   RO         2140    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
+    0x0800334c   0x0800334c   0x0000001a   Code   RO         2518    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08003366   0x08003366   0x00000000   Code   RO         2369    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x08003366   0x08003366   0x00000011   Data   RO         2118    .constdata          c_w.l(__printf_flags_ss_wp.o)
+    0x08003377   0x08003377   0x000000a7   Data   RO         1837    .rodata.str1.1      main.o
+    0x0800341e   0x0800341e   0x00000003   Data   RO         1929    .rodata.str1.1      stringclass.o
+    0x08003421   0x08003421   0x00000003   PAD
+    0x08003424   0x08003424   0x00000020   Data   RO         2646    Region$$Table       anon$$obj.o
+    0x08003444   0x08003444   0x00000004   Data   RO         1768    .init_array         rs232.o
+    0x08003448   0x08003444   0x00000004   Data   RO         1867    .init_array         commandsystem.o
+    0x0800344c   0x08003444   0x00000004   Data   RO         1966    .init_array         timercallback.o
+    0x08003450   0x08003444   0x00000000   Data   RO         2133    .init_array         c_w.l(init_aeabi.o)
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003340, Size: 0x000081f0, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003450, Size: 0x000081f0, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08003340   0x00000030   Data   RW         1010    .data..L_MergedGlobals  stm32f30x_rcc.o
-    0x20000030   0x08003370   0x00000014   Data   RW         1629    .data..L_MergedGlobals  system_stm32f30x.o
-    0x20000044   0x08003384   0x00000008   Data   RW         1701    .data..L_MergedGlobals  utilities.o
-    0x2000004c   0x0800338c   0x00000004   Data   RW         1764    .data.RSDelayTimer  rs232.o
+    0x20000000   0x08003450   0x00000030   Data   RW         1010    .data..L_MergedGlobals  stm32f30x_rcc.o
+    0x20000030   0x08003480   0x00000014   Data   RW         1629    .data..L_MergedGlobals  system_stm32f30x.o
+    0x20000044   0x08003494   0x00000008   Data   RW         1701    .data..L_MergedGlobals  utilities.o
+    0x2000004c   0x0800349c   0x00000004   Data   RW         1764    .data.RSDelayTimer  rs232.o
     0x20000050        -       0x00000060   Zero   RW         2453    .bss                c_w.l(libspace.o)
     0x200000b0        -       0x0000000c   Zero   RW            6    .bss..L_MergedGlobals  systick.o
-    0x200000bc   0x08003390   0x00000004   PAD
+    0x200000bc   0x080034a0   0x00000004   PAD
     0x200000c0        -       0x00000040   Zero   RW         1737    .bss..L_MergedGlobals  dcmotorsystem.o
     0x20000100        -       0x0000000c   Zero   RW         1841    .bss..L_MergedGlobals  main.o
-    0x2000010c   0x08003390   0x00000004   PAD
+    0x2000010c   0x080034a0   0x00000004   PAD
     0x20000110        -       0x00000040   Zero   RW         1998    .bss..L_MergedGlobals  lcdsystem.o
     0x20000150        -       0x00000200   Zero   RW         1863    .bss.CommandTable   commandsystem.o
     0x20000350        -       0x00004400   Zero   RW         1864    .bss.CommandTableKeys  commandsystem.o
@@ -4948,7 +4956,7 @@ Memory Map of the image
     0x20006a68        -       0x00000080   Zero   RW         1963    .bss.TimerTableFuncs  timercallback.o
     0x20006ae8        -       0x00001100   Zero   RW         1964    .bss.TimerTableKeys  timercallback.o
     0x20007be8        -       0x00000001   Zero   RW         1767    .bss.data           rs232.o
-    0x20007be9   0x08003390   0x00000007   PAD
+    0x20007be9   0x080034a0   0x00000007   PAD
     0x20007bf0        -       0x00000200   Zero   RW         1641    HEAP                startup_stm32f303xe.o
     0x20007df0        -       0x00000400   Zero   RW         1640    STACK               startup_stm32f303xe.o
 
@@ -4962,8 +4970,8 @@ Image component sizes
 
        456         56          4          0      26628      11517   commandsystem.o
        428         52          0          0         64      12001   dcmotorsystem.o
-       814         40          0          0         64      15689   lcdsystem.o
-      1972        580        167          0         12      17005   main.o
+       894         44          0          0         64      15689   lcdsystem.o
+      2160        608        167          0         12      17198   main.o
        460         40          4          4        273      14789   rs232.o
         64         26        404          0       1536        844   startup_stm32f303xe.o
        192          0          0          0          0       6112   stm32f30x_gpio.o
@@ -4978,9 +4986,9 @@ Image component sizes
        594         32          0          8          0      13546   utilities.o
 
     ----------------------------------------------------------------------
-      9628       1298        621         80      33088     194124   Object Totals
+      9900       1334        621         80      33088     194317   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        14          0          3          0         15          0   (incl. Padding)
+        18          4          3          0         15          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -5051,15 +5059,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12482       1392        638         80      33184     195136   Grand Totals
-     12482       1392        638         80      33184     195136   ELF Image Totals
-     12482       1392        638         80          0          0   ROM Totals
+     12754       1428        638         80      33184     195329   Grand Totals
+     12754       1428        638         80      33184     195329   ELF Image Totals
+     12754       1428        638         80          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                13120 (  12.81kB)
+    Total RO  Size (Code + RO Data)                13392 (  13.08kB)
     Total RW  Size (RW Data + ZI Data)             33264 (  32.48kB)
-    Total ROM Size (Code + RO Data + RW Data)      13200 (  12.89kB)
+    Total ROM Size (Code + RO Data + RW Data)      13472 (  13.16kB)
 
 ==============================================================================
 
