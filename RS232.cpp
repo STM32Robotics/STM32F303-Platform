@@ -1,5 +1,7 @@
 #include "RS232.h"
 
+//USART Based
+
 volatile void (*RS232Invoker)(char*, int) = 0;
 
 void RS232Init()
@@ -41,7 +43,7 @@ void RS232Init()
 	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 1;
 	NVIC_Init(&NVIC_InitStruct);
 }
 
@@ -63,9 +65,9 @@ void RS232SendString(const char* str)
 	RS232Send('\r');
 }
 
-void RS232SendString(TString str)
+void RS232SendString(TString &str)
 {
-	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped
+	Delay(RSDelayTimer);
 	for(int i = 0; i < str.GetLength(); i++)
 	{
 		RS232Send(str[i]);
@@ -76,7 +78,7 @@ void RS232SendString(TString str)
 
 void RS232SendString(char* str)
 {
-	Delay(RSDelayTimer); //Mandatory if RS232SendString is called in succession otherwise one character gets skipped
+	Delay(RSDelayTimer);
 	for(int i = 0; i < strlen(str); i++)
 	{
 		RS232Send(str[i]);
@@ -86,7 +88,6 @@ void RS232SendString(char* str)
 }
 
 TString DataBuffer;
-TString LastData;
 char data;
 extern "C"
 {
@@ -102,12 +103,6 @@ extern "C"
 					DataBuffer.Clear();
 					return;
 				}
-				if(DataBuffer == LastData)
-				{
-					DataBuffer.Clear();
-					return;
-				}
-				LastData = DataBuffer;
 				AddCommandToQueue(DataBuffer);
 				DataBuffer.Clear();
 			}

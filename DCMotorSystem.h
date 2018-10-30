@@ -9,6 +9,10 @@
 #define DCMOTOR2_MASK   (DC_M2_BW | DC_M2_FW)
 #define MAXSPEED        100U
 
+#define TIM1_CNT_CLOCK_MOTOR 2000000
+#define PRESCALE_MOTOR (uint32_t)((SystemCoreClock / TIM1_CNT_CLOCK_MOTOR) - 1)
+#define PERIOD_MOTOR 99
+
 void DCMotorInit();
 
 typedef struct _dcmotor_attr {

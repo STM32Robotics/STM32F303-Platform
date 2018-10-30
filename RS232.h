@@ -9,5 +9,5 @@ void RS232Init();
 void RS232Send(char ch);
 void RS232SendString(const char*);
 void RS232SendString(char*);
-void RS232SendString(TString);
+void RS232SendString(TString&);
 #endif

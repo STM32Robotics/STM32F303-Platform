@@ -3,7 +3,6 @@
 
 void TString::ResetBuffer()
 {
-	ErrorBuffer[0] = 0;
 	for (unsigned int i = 0; i < BufferSize; i++)
 		Buffer[i] = 0;
 	StrSize = 0;
@@ -221,7 +220,7 @@ void TString::RemoveFirstWords(unsigned int wordCount)
 	}
 }
 
-bool TString::DoesWordEqualTo(unsigned int wordN, TString word)
+bool TString::DoesWordEqualTo(unsigned int wordN, TString& word)
 {
 	if (wordN == 0)
 		return false;
@@ -277,19 +276,11 @@ int TString::GetLength()
 
 const char TString::operator[](const unsigned int i) const 
 {
-	if (i >= BufferSize)
-		return 0;
-	if (i >= StrSize)
-		return 0;
 	return Buffer[i];
 }
 
 char& TString::operator[](const unsigned int i) 
 { 
-	if (i >= BufferSize)
-		return ErrorBuffer[0];
-	if (i >= StrSize)
-		return ErrorBuffer[0];
 	return Buffer[i]; 
 }
 

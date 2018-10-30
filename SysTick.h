@@ -11,5 +11,10 @@ extern volatile bool StartDelay;
 //Prototypes
 extern "C" { void SysTick_Handler(); }
 void SysTickInit();
+void StartTimerCounter();
+void EndTimerCounter();
+int GetTimerCountMS();
+int GetTimerCountUS();
+void ZeroTimerCount();
 
 #endif

@@ -9,14 +9,6 @@ static TIM_TimeBaseInitTypeDef tim3_initStruct;
 static TIM_ICInitTypeDef t3it_initStruct;
 static NVIC_InitTypeDef nvic_initStruct;
 
-#define TIM3_CNT_CLOCK 1000000
-#define PRESCALE  (uint32_t)((SystemCoreClock / TIM3_CNT_CLOCK) - 1)
-#define PERIOD 0x0000FFFF
-#define VANE_NUM 27.0
-#define GEAR_RATIO 22.5
-#define WHEEL_ROTATION 16.65
-#define NUM_US_IN_SEC 1000000.0
-
 typedef struct
 {
     uint32_t pwm;
@@ -27,6 +19,7 @@ typedef struct
 static uint32_t period = 0;
 static uint32_t last_cap = 0;
 static uint8_t counter = 0;
+
 void EncoderInit(void)
 {
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
@@ -58,7 +51,7 @@ void EncoderInit(void)
     
     nvic_initStruct.NVIC_IRQChannel = TIM3_IRQn;
     nvic_initStruct.NVIC_IRQChannelCmd = ENABLE;
-    nvic_initStruct.NVIC_IRQChannelPreemptionPriority = 0;
+    nvic_initStruct.NVIC_IRQChannelPreemptionPriority = 1;
     nvic_initStruct.NVIC_IRQChannelSubPriority = 0;
     
     NVIC_Init(&nvic_initStruct);

@@ -11,6 +11,9 @@
 #include "Utilities.h"
 #include "LCDSystem.h"
 
+//Nucleo UUID memory offset
+#define STM32_UUID ((uint32_t*)0x1FFFF7AC)
+
 extern volatile void (*LoopFunc)();
 extern "C" 
 { 

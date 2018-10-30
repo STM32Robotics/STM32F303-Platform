@@ -10,8 +10,8 @@
 #define CommandSizeQueue 64
 
 void InitCommandSystem();
-void AddCommandHandler(void (*f)(TString), const char* cmd);
-void ExecuteAllQueueCommands();
-void AddCommandToQueue(TString data);
+void AddCommandHandler(void (*f)(TString&), const char* cmd);
+unsigned int ExecuteAllQueueCommands();
+void AddCommandToQueue(TString &data);
 
 #endif

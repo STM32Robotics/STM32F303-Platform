@@ -6,19 +6,19 @@ static TIM_TimeBaseInitTypeDef tim1_initStruct;
 static TIM_OCInitTypeDef t1oc_config;
 static TIM_BDTRInitTypeDef bdtr_initStruct;
 
+volatile uint16_t tmp1;
 static void LCD_Send_HNibble(uint16_t inData)
 {
-    volatile uint16_t tmp = GPIOB->ODR;
-    
+    tmp1 = GPIOB->ODR;
     GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);
     FORCE_BITS(GPIOB->ODR, LCD_BUS_MASK, inData);
     GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
 }
 
+volatile uint16_t tmp2;
 static void LCD_Send_LNibble(uint16_t inData)
 {
-    volatile uint16_t tmp = GPIOB->ODR;
-
+    tmp2 = GPIOB->ODR;
     GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);
     FORCE_BITS(GPIOB->ODR, LCD_BUS_MASK, (inData << 4));
     GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
@@ -30,7 +30,6 @@ static void init_lcd_busy_flag (void)
     pb_InitStruct.GPIO_Pin = LCD_BUSY_FLAG;
     pb_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
     pb_InitStruct.GPIO_Speed = GPIO_Speed_Level_1;
-    
     GPIO_Init(GPIOB, &pb_InitStruct);    
 }
 
@@ -40,8 +39,7 @@ static void restore_lcd_data (void)
     pb_InitStruct.GPIO_Pin = LCD_BUSY_FLAG;
     pb_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
     pb_InitStruct.GPIO_Speed = GPIO_Speed_Level_1;
-    
-    GPIO_Init(GPIOB, &pb_InitStruct);   
+    GPIO_Init(GPIOB, &pb_InitStruct);
 }
 static void readBusyFlag(void) 
 {
@@ -54,13 +52,13 @@ static void readBusyFlag(void)
    
    do 
    {
-    GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);  
-    checkBusy = GPIO_ReadInputData(GPIOB);
-    GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
-    
-    GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);  
-    GPIO_ReadInputData(GPIOB);
-    GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
+			GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);  
+			checkBusy = GPIO_ReadInputData(GPIOB);
+			GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
+			
+			GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_SET);  
+			GPIO_ReadInputData(GPIOB);
+			GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
     
    }while(checkBusy & LCD_BUSY_FLAG);
    restore_lcd_data();   
@@ -69,12 +67,10 @@ static void readBusyFlag(void)
 static void LCD_Send(uint16_t val, LCD_SEND_TYPE type)
 { 
     GPIO_WriteBit(LCD_PORT, LCD_E_MASK, Bit_RESET);
-
     if (type == CMD)
         GPIO_WriteBit(LCD_PORT,LCD_RS_MASK, Bit_RESET);
     else
         GPIO_WriteBit(LCD_PORT,LCD_RS_MASK, Bit_SET);
-    
     GPIO_WriteBit(LCD_PORT,LCD_RW_MASK, Bit_RESET);
     LCD_Send_HNibble(val);
     LCD_Send_LNibble(val);
@@ -96,8 +92,8 @@ void LCDInit()
    
     RCC_APB2PeriphClockCmd (RCC_APB2Periph_TIM1, ENABLE);
     
-    tim1_initStruct.TIM_Prescaler = PRESCALE;
-    tim1_initStruct.TIM_Period = PERIOD;
+    tim1_initStruct.TIM_Prescaler = PRESCALE_LCD;
+    tim1_initStruct.TIM_Period = PERIOD_LCD;
     tim1_initStruct.TIM_ClockDivision = 0;
     tim1_initStruct.TIM_RepetitionCounter = 0;
     tim1_initStruct.TIM_CounterMode = TIM_CounterMode_Up;
@@ -111,7 +107,7 @@ void LCDInit()
     //t1oc_config.TIM_OCNPolarity = TIM_OCNPolarity_High;
     //t1oc_config.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
     t1oc_config.TIM_OCIdleState = TIM_OCIdleState_Reset;
-    t1oc_config.TIM_Pulse = (uint32_t)(PERIOD /2);
+    t1oc_config.TIM_Pulse = (uint32_t)(PERIOD_LCD /2);
     
     TIM_OC3Init(TIM1, &t1oc_config);
 
@@ -142,7 +138,7 @@ void LCDInit()
     Delay(5);
 
 	LCD_Send_HNibble(0x30);
-	Delay(5);;
+		Delay(5);;
 
 	LCD_Send_HNibble(0x20);
     Delay(5);
@@ -155,26 +151,24 @@ void LCDInit()
     LCD_Send(LCD_DISPLAY|LCD_DISPLAY_ON|LCD_NOCURSOR|LCD_NOBLINK, CMD);
 }
 
-void LCDSendChar(uint8_t letter)
+void LCDSendChar(uint16_t letter)
 {
-    LCD_Send((uint16_t)letter, DATA);
+    LCD_Send(letter, DATA);
 }
 
-void LCDSendString (char *str)
+void LCDSendString (const char *str)
 {
-   unsigned char i = 0;
-   
-   while(str[i] != '\0') {
-       LCDSendChar(str[i]);
-       i++;
-   }
-}
-
-void LCDSendString (TString str)
-{
-	for(int i = 0; i < str.GetLength(); i++)
+	for(unsigned int i = 0; i < strlen(str) && i < 16; i++)
 	{
-		LCDSendChar(str[i]);
+		LCDSendChar((uint16_t)str[i]);
+	}
+}
+
+void LCDSendString (TString &str)
+{
+	for(unsigned int i = 0; i < str.GetLength() && i < 16; i++)
+	{
+		LCDSendChar((uint16_t)str[i]);
 	}
 }
 
@@ -213,7 +207,6 @@ void LCDClearLine (LCDLINE lineSel)
 
 	if (lineSel == First) {
 		LCDSetPos (First, 0);
-
 		while ( i <= 19) {
 			LCDSendChar(' ');
 			i = i + 1;

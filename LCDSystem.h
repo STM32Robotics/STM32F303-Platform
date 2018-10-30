@@ -48,15 +48,15 @@ typedef enum e_lcdline
 #define LOW( value )    ((value) & 0xFFFF)
 #define FORCE_BITS( port, mask, value)    (port) = ((port) & LOW(~(mask)) | ((value) & (mask)))
 
-#define TIM1_CNT_CLOCK 3200000
-#define PRESCALE  (uint32_t)((SystemCoreClock / TIM1_CNT_CLOCK) - 1)
-#define PERIOD 99
+#define TIM1_CNT_CLOCK_LCD 3200000
+#define PRESCALE_LCD (uint32_t)((SystemCoreClock / TIM1_CNT_CLOCK_LCD) - 1)
+#define PERIOD_LCD 99
 #define MAX_LCD_BUFSIZ 40U
 
 void LCDInit();
-void LCDSendChar(uint8_t letter);
-void LCDSendString (char *str);
-void LCDSendString(TString str);
+void LCDSendChar(uint16_t letter);
+void LCDSendString (const char *str);
+void LCDSendString(TString &str);
 void LCDClear(void);
 void LCDSetPos (LCDLINE lineSel, unsigned char offset);
 void LCDClearLine(LCDLINE lineSel);

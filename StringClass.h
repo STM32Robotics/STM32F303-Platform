@@ -12,7 +12,6 @@ class TString
 private:
 	unsigned int StrSize = 0;
 	char Buffer[BufferSize];
-	char ErrorBuffer[1]; //Trick to bypass pointer return
 	void ResetBuffer();
 public:
 	TString(const char* str);
@@ -21,7 +20,7 @@ public:
 	void ToLower();
 	void ToUpper();
 	bool DoesWordEqualTo(unsigned int wordN, const char* word); //"String 1" -> DoesWordEqualTo(2, "1") -> true
-	bool DoesWordEqualTo(unsigned int wordN, TString word);
+	bool DoesWordEqualTo(unsigned int wordN, TString &word);
   bool DoesWordContain(unsigned int wordN, const char ch);
 	void RemoveFirstWords(unsigned int wordCount);
 	int GetIntFromWord(unsigned int wordN);

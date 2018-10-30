@@ -1,4 +1,5 @@
 #include "TimerCallback.h"
+#include "ServoSystem.h"
 
 void (*TimerTableFuncs[TimerSize])() = {0};
 TString TimerTableKeys[TimerSize];
@@ -56,11 +57,56 @@ extern "C"
 			TIM_ClearITPendingBit(TIM1, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM1CH4");
 		}
-		ExecuteTimerCallback("TIM1");
+		
+		if(TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
+		{
+			TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
+			ExecuteTimerCallback("TIM1");
+		}
 	}
 	
+	#define __HAL_TIM_GET_FLAG(__HANDLE__, __FLAG__)       (((__HANDLE__)->SR &(__FLAG__)) == (__FLAG__))
+	#define __HAL_TIM_GET_IT_SOURCE(__HANDLE__, __INTERRUPT__) ((((__HANDLE__)->DIER & (__INTERRUPT__)) == (__INTERRUPT__)) ? SET : RESET)
+	#define __HAL_TIM_CLEAR_FLAG(__HANDLE__, __FLAG__)       ((__HANDLE__)->SR = ~(__FLAG__))
 	void TIM2_IRQHandler()
 	{
+		if(__HAL_TIM_GET_FLAG(TIM2, TIM_FLAG_CC4) != RESET)
+		{
+			if(__HAL_TIM_GET_IT_SOURCE(TIM2, TIM_IT_CC4) != RESET)
+			{
+				__HAL_TIM_CLEAR_FLAG(TIM2, TIM_FLAG_CC4);
+				
+				if((TIM2->CCMR2 & TIM_CCMR2_CC4S) != 0x00U)
+				{
+					
+				}
+				else
+				{
+					//SetLEDColor(LED_Blue);
+					Timer2PWM();
+					//ExecuteTimerCallback("TIM2CH4");
+				}
+			}
+		}
+		
+		if(__HAL_TIM_GET_FLAG(TIM2, TIM_SR_UIF) != RESET)
+		{
+			if(__HAL_TIM_GET_IT_SOURCE(TIM2, TIM_DIER_UIE) !=RESET)
+			{ 
+				__HAL_TIM_CLEAR_FLAG(TIM2, TIM_SR_UIF);
+			}
+		}
+		
+		if(__HAL_TIM_GET_FLAG(TIM2, TIM_SR_BIF) != RESET)
+		{
+			if(__HAL_TIM_GET_IT_SOURCE(TIM2, TIM_DIER_BIE) !=RESET)
+			{ 
+				__HAL_TIM_CLEAR_FLAG(TIM2, TIM_SR_BIF);
+			}
+		}
+		
+		return;
+		//SetLEDColor(LED_Magenta);
 		if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
 		{
 			TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
@@ -79,9 +125,21 @@ extern "C"
 		else if(TIM_GetITStatus(TIM2, TIM_IT_CC4) != RESET)
 		{
 			TIM_ClearITPendingBit(TIM2, TIM_IT_CC4);
-			ExecuteTimerCallback("TIM2CH4");
+			if((TIM2->CCMR2 & TIM_CCMR2_CC4S) != 0x00U)
+			{
+				
+			}
+			else
+			{
+				//SetLEDColor(LED_Blue);
+				ExecuteTimerCallback("TIM2CH4");
+			}
 		}
-		ExecuteTimerCallback("TIM2");
+		if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+		{
+			TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+			ExecuteTimerCallback("TIM2");
+		}
 	}
 
 	void TIM3_IRQHandler()
@@ -131,7 +189,12 @@ extern "C"
 			TIM_ClearITPendingBit(TIM4, TIM_IT_CC4);
 			ExecuteTimerCallback("TIM4CH4");
 		}
-		ExecuteTimerCallback("TIM4");
+		
+		if (TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET) 
+		{
+			TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
+			ExecuteTimerCallback("TIM4");
+		}
 	}
 
 	void TIM7_IRQHandler()

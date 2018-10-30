@@ -5,10 +5,6 @@
 #include "SysTick.h"
 #include "Utilities.h"
 
-#define TIM1_CNT_CLOCK 2000000
-#define PRESCALE  (uint32_t)((SystemCoreClock / TIM1_CNT_CLOCK) - 1)
-#define PERIOD 99
-
 static GPIO_InitTypeDef pa_InitStruct, pb_InitStruct;
 static TIM_TimeBaseInitTypeDef tim1_initStruct;
 static TIM_OCInitTypeDef t1oc_config;
@@ -49,8 +45,8 @@ void DCMotorInit(void)
 
     RCC_APB2PeriphClockCmd (RCC_APB2Periph_TIM1, ENABLE);
     
-    tim1_initStruct.TIM_Prescaler = PRESCALE;
-    tim1_initStruct.TIM_Period = PERIOD;
+    tim1_initStruct.TIM_Prescaler = PRESCALE_MOTOR;
+    tim1_initStruct.TIM_Period = PERIOD_MOTOR;
     tim1_initStruct.TIM_ClockDivision = 0;
     tim1_initStruct.TIM_RepetitionCounter = 0;
     tim1_initStruct.TIM_CounterMode = TIM_CounterMode_Up;
@@ -62,7 +58,7 @@ void DCMotorInit(void)
     
     /* PWM SPECIFIC */
     t1oc_config.TIM_OCIdleState = TIM_OCIdleState_Reset;
-    t1oc_config.TIM_Pulse = (uint32_t)(PERIOD / 2);
+    t1oc_config.TIM_Pulse = (uint32_t)(PERIOD_MOTOR / 2);
     t1oc_config.TIM_OutputState = TIM_OutputState_Enable;
     TIM_OC1Init(TIM1, &t1oc_config);
     TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
@@ -89,12 +85,14 @@ void DCMotor(motor_sel which_motor, unsigned char const speed, motor_dir directi
     else
         temp_speed = speed;
 		
-		double slope1 = 52.0;
+		double slope1 = 45.0;
 		double slope2 = 100.0;
 		double x = (double)temp_speed;
-		double b = 50.0;
+		double b = 55.0;
 		
 		temp_speed = (unsigned char)(slope1 / slope2 * x + b);
+		if(speed == 0)
+			temp_speed = 0;
     
     if(which_motor == M_ONE) {
             CLR_BITS(GPIOA->ODR, DCMOTOR1_MASK);

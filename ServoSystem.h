@@ -8,6 +8,6 @@
 #define SRVO_TIM_CFG_ERR    -2
 #define SRVO_TIM_STRT_ERR   -3
 
-int16_t ServoInit();
+void ServoInit();
 void Servo(uint32_t degree);
-void PWMPulseFinish();
+void Timer2PWM();
